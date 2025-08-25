@@ -1,0 +1,610 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PremiumBox Theme\n"
+"POT-Creation-Date: 2024-11-16 10:19+0300\n"
+"PO-Revision-Date: 2024-11-16 10:19+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: js\n"
+
+#: 404.php:9
+msgid "What does it mean?"
+msgstr "Что это значит?"
+
+#: 404.php:12
+msgid "Page has been renamed"
+msgstr "Страница была переименована"
+
+#: 404.php:13
+msgid "Page has been deleted"
+msgstr "Страница была удалена"
+
+#: 404.php:14
+msgid "Pages never existed"
+msgstr "Страницы никогда не существовало"
+
+#: 404.php:17
+#, php-format
+msgid "Please go to <a href=\"%s\">main page</a>"
+msgstr "Пожалуйста перейдите на <a href=\"%s\">главную</a>"
+
+#: comments.php:25
+#, php-format
+msgid "Comments for news \"%s\""
+msgstr "Комментарии к новости \"%s\""
+
+#: comments.php:41
+msgid "No comments"
+msgstr "Нет комментариев"
+
+#: comments.php:53
+msgid "&larr; Older Comments"
+msgstr "&larr; Прошлые комментарии"
+
+#: comments.php:54
+msgid "Newer Comments &rarr;"
+msgstr "Новые комментарии &rarr;"
+
+#: comments.php:63
+msgid "Commenting is available only to registered users"
+msgstr "Комментарии разрешены только для зарегистрированных пользователей"
+
+#: comments.php:68
+msgid "your comment"
+msgstr "ваш комментарий"
+
+#: comments.php:68
+msgid "cancel reply"
+msgstr "отменить ответ"
+
+#: comments.php:74
+msgid "Name"
+msgstr "Имя"
+
+#: comments.php:79 settings/header.php:94
+msgid "E-mail"
+msgstr "E-mail"
+
+#: comments.php:92
+msgid "Comment text"
+msgstr "Комментарий"
+
+#: comments.php:98
+msgid "Add comment"
+msgstr "Оставить комментарий"
+
+#: footer.php:26
+msgid "electronic currency exchange service."
+msgstr "сервис обмена электронных валют."
+
+#: functions.php:29
+msgid "Dear users, right now our website is updating. Please come back later."
+msgstr ""
+"Дорогие пользователи, в данный момент происходит обновление сайта. "
+"Пожалуйста, приходите позже."
+
+#: header.php:42
+msgid "Menu"
+msgstr "Меню"
+
+#: header.php:48 header.php:124
+msgid "Exit"
+msgstr "Выйти"
+
+#: header.php:49 header.php:125
+msgid "Account"
+msgstr "Аккаунт"
+
+#: header.php:51 header.php:127
+msgid "Sign up"
+msgstr "Регистрация"
+
+#: header.php:52 header.php:128
+msgid "Sign in"
+msgstr "Войти"
+
+#: header.php:70
+msgid "Contacts"
+msgstr "Контакты"
+
+#: header.php:80
+msgid "to write"
+msgstr "написать"
+
+#: header.php:218
+msgid "Currency exchange"
+msgstr "Обмен валют"
+
+#: includes/breadcrumb.php:42
+msgid "Home"
+msgstr "Главная"
+
+#: includes/breadcrumb.php:44 includes/breadcrumb.php:98 pn-homepage.php:193
+msgid "News"
+msgstr "Новости"
+
+#: includes/breadcrumb.php:96
+msgid "Error 404"
+msgstr "Ошибка 404"
+
+#: includes/comment_func.php:14
+msgid "Link for comment"
+msgstr "Ссылка на комментарий"
+
+#: includes/comment_func.php:30
+msgid "Edit comment"
+msgstr "Редактировать"
+
+#: includes/comment_func.php:37
+msgid "Comment is moderation"
+msgstr "Комментарий на модерации"
+
+#: includes/comment_func.php:49
+msgid "reply comment"
+msgstr "ответить"
+
+#: includes/sites_func.php:32
+msgid "Top menu for Guests"
+msgstr "Верхнее меню для гостей"
+
+#: includes/sites_func.php:33
+msgid "Top menu for Users"
+msgstr "Верхнее меню для пользователей"
+
+#: includes/sites_func.php:34
+msgid "Bottom menu"
+msgstr "Нижнее меню"
+
+#: includes/sites_func.php:46 sidebar.php:5
+msgid "Sidebar"
+msgstr "Боковая колонка"
+
+#: index.php:66 settings/home.php:95 single.php:34
+msgid "Category"
+msgstr "Раздел"
+
+#: index.php:68 single.php:36
+msgid "Tags"
+msgstr "Тэги"
+
+#: index.php:72
+msgid "Read more"
+msgstr "Подробнее"
+
+#: index.php:82
+msgid "Unfortunately this section is empty"
+msgstr "К сожалению, этот раздел пустой"
+
+#: pn-homepage.php:74
+msgid "Reviews"
+msgstr "Отзывы"
+
+#: pn-homepage.php:109
+msgid "All reviews"
+msgstr "Все отзывы"
+
+#: pn-homepage.php:122
+msgid "Last exchanges"
+msgstr "Последние обмены"
+
+#: pn-homepage.php:230
+msgid "All news"
+msgstr "Все новости"
+
+#: pn-homepage.php:250
+msgid "Currency reserve"
+msgstr "Резерв валюты"
+
+#: pn-homepage.php:284
+msgid "Show all"
+msgstr "Показать все"
+
+#: pn-homepage.php:284
+msgid "Hide"
+msgstr "Скрыть"
+
+#: pn-homepage.php:305 settings/home.php:136
+msgid "Advantages"
+msgstr "Преимущества"
+
+#: pn-homepage.php:352
+msgid "Rates"
+msgstr "Курсы"
+
+#: pn-homepage.php:391 settings/home.php:125
+msgid "Partners"
+msgstr "Партнеры"
+
+#: settings/color_scheme.php:8 settings/color_scheme.php:15
+#: settings/color_scheme.php:26 settings/color_scheme.php:32
+msgid "Color scheme"
+msgstr "Цветовая схема"
+
+#: settings/color_scheme.php:27 settings/footer.php:28 settings/header.php:27
+#: settings/home.php:28 settings/home.php:52
+msgid "Save"
+msgstr "Сохранить"
+
+#: settings/color_scheme.php:33
+msgid "light"
+msgstr "светлая"
+
+#: settings/color_scheme.php:33
+msgid "dark"
+msgstr "темная"
+
+#: settings/color_scheme.php:40
+msgid "More info"
+msgstr "Подробнее"
+
+#: settings/color_scheme.php:41
+#, php-format
+msgid ""
+"Find out more information about website appearance settings by <a "
+"href=\"%1$s\" target=\"_blank\">link</a>."
+msgstr ""
+"Узнайте больше о настройках внешнего вида веб сайта по <a href=\"%1$s\" "
+"target=\"_blank\">ссылке</a>."
+
+#: settings/footer.php:9 settings/footer.php:16 settings/footer.php:27
+msgid "Footer"
+msgstr "Нижняя часть сайта"
+
+#: settings/footer.php:32
+msgid "Copywriting"
+msgstr "Текст копирайта"
+
+#: settings/footer.php:41 settings/header.php:58
+msgid "Timetable"
+msgstr "График работы"
+
+#: settings/footer.php:53 settings/header.php:70
+msgid "Phone"
+msgstr "Телефон"
+
+#: settings/footer.php:64 settings/footer.php:71 settings/footer.php:78
+#: settings/footer.php:85 settings/footer.php:92
+#, php-format
+msgid "Link to %s"
+msgstr "Ссылка на %s"
+
+#: settings/footer.php:98
+msgid "If you plan to use links as social buttons, use the following shortcode"
+msgstr ""
+"Если вы планируете использовать ссылки, как социальные кнопки, используйте "
+"следующий шорткод"
+
+#: settings/footer.php:102
+msgid "Info"
+msgstr "Информация"
+
+#: settings/header.php:9 settings/header.php:16 settings/header.php:26
+msgid "Header"
+msgstr "Шапка сайта"
+
+#: settings/header.php:31
+msgid "To fix"
+msgstr "Зафиксировать"
+
+#: settings/header.php:32
+msgid "nothing"
+msgstr "ничего"
+
+#: settings/header.php:32
+msgid "bar"
+msgstr "бар"
+
+#: settings/header.php:39
+msgid "Logo link"
+msgstr "Ссылка в лого"
+
+#: settings/header.php:40
+msgid "always"
+msgstr "всегда"
+
+#: settings/header.php:40
+msgid "with the exception of homepage"
+msgstr "кроме главной"
+
+#: settings/header.php:47
+msgid "Hide login/register link"
+msgstr "Скрыть ссылки для входа/регистрации"
+
+#: settings/header.php:48
+msgid "No"
+msgstr "Нет"
+
+#: settings/header.php:48
+msgid "Yes"
+msgstr "Да"
+
+#: settings/header.php:78
+msgid "ICQ"
+msgstr "ICQ"
+
+#: settings/header.php:86
+msgid "Skype"
+msgstr "Skype"
+
+#: settings/header.php:102
+msgid "Telegram"
+msgstr "Telegram"
+
+#: settings/header.php:110
+msgid "Viber"
+msgstr "Viber"
+
+#: settings/header.php:118
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: settings/header.php:126
+msgid "Jabber"
+msgstr "Jabber"
+
+#: settings/home.php:9 settings/home.php:16
+msgid "Homepage"
+msgstr "Главная страница"
+
+#: settings/home.php:27
+msgid "Information"
+msgstr "Информация"
+
+#: settings/home.php:32 settings/home.php:56
+msgid "Title"
+msgstr "Заголовок"
+
+#: settings/home.php:40 settings/home.php:64
+msgid "Text"
+msgstr "Текст"
+
+#: settings/home.php:51
+msgid "Welcome message"
+msgstr "Приветственное сообщение"
+
+#: settings/home.php:78
+msgid "News column"
+msgstr "Блок новостей"
+
+#: settings/home.php:79 settings/home.php:107 settings/home.php:118
+#: settings/home.php:126 settings/home.php:137 settings/home.php:148
+msgid "hide"
+msgstr "скрыть"
+
+#: settings/home.php:79 settings/home.php:107 settings/home.php:118
+#: settings/home.php:126 settings/home.php:137 settings/home.php:148
+msgid "show"
+msgstr "показать"
+
+#: settings/home.php:87
+msgid "All"
+msgstr "Все"
+
+#: settings/home.php:106
+msgid "Reviews column"
+msgstr "Блок отзывов"
+
+#: settings/home.php:117
+msgid "Last exchange"
+msgstr "Последний обмен"
+
+#: settings/home.php:147
+msgid "Reserve"
+msgstr "Резерв"
+
+#: settings/home.php:192
+msgid "Hide currency reserve in widget"
+msgstr "Скрыть резерв валюты в виджете"
+
+#: settings/home.php:228
+msgid "Show parsers"
+msgstr "Вывести курсы"
+
+#: single.php:39
+msgid "Back to news"
+msgstr "Вернуться к новостям"
+
+#~ msgid "Error!"
+#~ msgstr "Ошибка!"
+
+#~ msgid "Go to website"
+#~ msgstr "Перейти на веб-сайт"
+
+#~ msgid "green"
+#~ msgstr "зеленая"
+
+#~ msgid "yellow"
+#~ msgstr "желтая"
+
+#~ msgid "blue"
+#~ msgstr "синяя"
+
+#~ msgid "red"
+#~ msgstr "красная"
+
+#~ msgid "Link to Facebook"
+#~ msgstr "Ссылка на Facebook"
+
+#~ msgid "Link to Twitter"
+#~ msgstr "Ссылка на Twitter"
+
+#~ msgid "menu"
+#~ msgstr "меню"
+
+#~ msgid "Mobile version"
+#~ msgstr "Мобильная версия"
+
+#~ msgid "Logo"
+#~ msgstr "Логотип"
+
+#~ msgid "Text logo"
+#~ msgstr "Текстовый логотип"
+
+#~ msgid "Color scheme (mobile version)"
+#~ msgstr "Цветовая схема (моб. версия)"
+
+#~ msgid "Homepage (mobile version)"
+#~ msgstr "Главная страница (моб. версия)"
+
+#~ msgid "to the top"
+#~ msgstr "наверх"
+
+#~ msgid "Go to a Original version"
+#~ msgstr "Перейти на основную версию"
+
+#~ msgid "Language selection"
+#~ msgstr "Выбор языка"
+
+#~ msgid "Mobile top menu for guest"
+#~ msgstr "Мобильное меню для гостей"
+
+#~ msgid "Mobile top menu for users"
+#~ msgstr "Мобильное меню для пользователей"
+
+#~ msgid "mobile version"
+#~ msgstr "Мобильная версия"
+
+#~ msgid "Link to Google+"
+#~ msgstr "Ссылка на Google+"
+
+#~ msgid "Check all/Uncheck all"
+#~ msgstr "Выбрать все/Снять все"
+
+#~ msgid "Please go to <a href=\"%s\">main page</a>."
+#~ msgstr "Пожалуйста перейдите на <a href=\"%s\">главную</a>."
+
+#~ msgid "Apply"
+#~ msgstr "Действие"
+
+#~ msgid "Add to skype"
+#~ msgstr "Добавить в skype"
+
+#~ msgid "Yuriy"
+#~ msgstr "Юрий"
+
+#~ msgid "Type your answer"
+#~ msgstr "Введите ответ"
+
+#~ msgid "replace task"
+#~ msgstr "заменить задачу"
+
+#~ msgid "Category:"
+#~ msgstr "Раздел:"
+
+#~ msgid "Tags:"
+#~ msgstr "Тэги:"
+
+#~ msgid "Sing up"
+#~ msgstr "Регистрация"
+
+#~ msgid "Sing in"
+#~ msgstr "Авторизация"
+
+#~ msgid "go to a PC version"
+#~ msgstr "Перейти на PC версию"
+
+#~ msgid "Registration"
+#~ msgstr "Регистрация"
+
+#~ msgid "Authorization"
+#~ msgstr "Авторизация"
+
+#~ msgid "Go to <a href=\"%s\">main</a>, please."
+#~ msgstr "Перейдите на <a href=\"%s\">главную</a>, пожалуйста."
+
+#~ msgid "Fixed"
+#~ msgstr "Зафиксировать"
+
+#~ msgid "Link in logo"
+#~ msgstr "Ссылка в лого"
+
+#~ msgid "except home page"
+#~ msgstr "кроме главной"
+
+#~ msgid "Home page"
+#~ msgstr "Главная"
+
+#~ msgid "News block"
+#~ msgstr "Блок новостей"
+
+#~ msgid "Reviews block"
+#~ msgstr "Блок отзывов"
+
+#~ msgid ""
+#~ "Dear users at the moment site is under contraction. Please come back "
+#~ "later."
+#~ msgstr ""
+#~ "Дорогие пользователи, в данный момент сайт обновляется. Пожалуйста, "
+#~ "возвращайтесь позже."
+
+#~ msgid "Register"
+#~ msgstr "Регистрация"
+
+#~ msgid "Top menu for guest"
+#~ msgstr "Верхнее меню для гостей"
+
+#~ msgid "Top menu for users"
+#~ msgstr "Верхнее меню для пользователей"
+
+#~ msgid "Unfortunately the section is empty"
+#~ msgstr "К сожалению, раздел пустой"
+
+#~ msgid "to top"
+#~ msgstr "наверх"
+
+#~ msgid "Language"
+#~ msgstr "Выбор языка"
+
+#~ msgid "Error! insufficient privileges!"
+#~ msgstr "Ошибка! Недостаточно прав!"
+
+#~ msgid "Show currency reserve in widget"
+#~ msgstr "Показать резерв валюты в виджете"
+
+#~ msgid "Top menu"
+#~ msgstr "Верхнее меню"
+
+#~ msgid "Link with logo"
+#~ msgstr "Ссылка с логотипа"
+
+#~ msgid "except the main"
+#~ msgstr "кроме главной"
+
+#~ msgid "Block news"
+#~ msgstr "Блок новостей"
+
+#~ msgid "Block reviews"
+#~ msgstr "Блок отзывов"
+
+#~ msgid "Dear users, at the moment is updated. Please check back later."
+#~ msgstr ""
+#~ "Уважаемые пользователи, в данный момент происходит обновление. "
+#~ "Пожалуйста, зайдите позже."
+
+#~ msgid "Unfortunately, the section is empty"
+#~ msgstr "К сожалению, раздел пуст"
+
+#~ msgid "Reserve currency"
+#~ msgstr "Резерв валют"
+
+#~ msgid "Block articles"
+#~ msgstr "Блок статей"
+
+#~ msgid "Articles"
+#~ msgstr "Статьи"
+
+#~ msgid "Exchange"
+#~ msgstr "Обмен"
+
+#~ msgid "to"
+#~ msgstr "на"

@@ -1,0 +1,227 @@
+*{margin:0;padding:0;}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	border: 0;
+	font-family: inherit;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+html {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	overflow-y: scroll;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section {
+	display: block;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+table{border-collapse:collapse;border-spacing:0; vertical-align: middle;}
+
+caption,
+th,
+td {
+	font-weight: normal;
+	text-align: left;
+	vertical-align: middle;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: "";
+}
+
+blockquote,
+q {
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	quotes: none;
+}
+
+a:focus {
+	outline: 0;
+	outline: 0;
+}
+
+a:hover,
+a:active {
+	outline: 0;
+}
+
+a img {
+	-ms-interpolation-mode: bicubic;
+	border: 0;
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+img {
+	-ms-interpolation-mode: bicubic;
+	border: 0;
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+ins{text-decoration:none;}
+del{text-decoration:line-through;}
+
+sup {font-size:.7em;vertical-align: top;}
+sub {font-size:.7em;vertical-align: bottom;}
+small {font-size: 10px;}
+strong,dfn,dl dt,th{font-weight:600}
+
+h1, h2, h3, h4, h5, h6{ font-weight: normal;}
+
+select,input,textarea{
+padding:0;
+margin:0;
+outline:0;
+font-size:100%;
+vertical-align:baseline;
+}
+
+button, input[type=submit]{padding:0; margin:0; outline:0; font-size:100%; vertical-align:baseline; -webkit-appearance: none;} 
+
+a{text-decoration: underline; color:#5ccdde;}
+a:hover{text-decoration: underline; color: #c7254e;}
+
+body{
+font: 13px/1.3em 'Roboto', sans-serif;
+color: #454e59;
+background: #ebeef2;
+}
+
+.container{
+position: relative;
+width: 100%;
+min-width: 320px;
+}
+
+.table_wrap{
+max-width: 1040px;
+padding: 20px 10px;
+margin: 0 auto;
+}
+	.table_inner{
+	background: #fff;
+	padding: 20px;
+	border-radius: 4px;			
+	}
+		.table_title{
+		margin: -20px -20px 20px;
+		padding: 20px;
+		border-radius: 4px 4px 0 0;
+		background: #f9fafc;
+		border-bottom: 3px solid #dae0e8;
+		font: 700 14px 'Roboto', sans-serif;
+		text-transform: uppercase;
+		}
+		.table_recommend{
+		padding: 15px 20px;
+		background: #f9f2f4;
+		border-radius: 4px;
+		border: 1px solid #fad4df;
+		color: #c7254e;
+		font: 13px 'Roboto', sans-serif;
+		margin: 0 0 20px 0;
+		}
+			.table_recommend span{
+			font-weight: 600;	
+			}
+		.table_select{	
+		margin: 0 0 20px 0;	
+		}
+			.table_select select{
+			border: 1px solid #eeeeee; 
+			font: 500 13px 'Roboto', sans-serif;
+			border-radius: 4px;
+			padding: 6px 10px;
+			color: #000;
+			}
+			.table{
+			padding: 15px 20px;
+			background: #fff;
+			border-radius: 4px;
+			border: 1px solid #eeeeee; 
+			overflow-x: auto;
+			}
+				.table table{
+				border: none;
+				width: 100%;
+				}
+				.table table th{
+				font: 600 13px 'Roboto', sans-serif;
+				text-transform: uppercase;
+				color: #454e59;
+				background: #ffffff;
+				border: none;		
+				padding: 10px 10px;
+				border-bottom: 1px solid #eeeeee;
+				}	
+					.table table th span{
+					font: 11px 'Roboto', sans-serif;	
+					color: #999;
+					text-transform: lowercase;
+					}
+				.table table td{
+				font: 13px 'Roboto', sans-serif;
+				text-transform: lowercase;
+				background: #ffffff;
+				color: #000;
+				border-bottom: 1px solid #eeeeee;	
+				padding: 5px 10px;
+				}
+					.table table tr.odd td{
+					background: #f9f9f9;	
+					}
+					.table table tr.adv td{
+					border-bottom: 3px solid #6a7a64;				
+					}				
+					.table table tr:hover td{
+					background: #fcf8e3;	
+					}
+.bgreen{
+color: #64950c;
+font-weight: 500;	
+}	
+.bred{
+color: #de815c;
+font-weight: 500;	
+}
+.clear{
+clear: both;	
+}
