@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) { exit(); }
 /*
 title: [en_US:]Rates parser 2.0[:en_US][ru_RU:]Парсер курсов 2.0[:ru_RU]
 description: [en_US:]Rates parser 2.0[:en_US][ru_RU:]Парсер курсов 2.0[:ru_RU]
-version: 2.7.10
+version: 2.7.11
 category: [en_US:]Exchange directions[:en_US][ru_RU:]Направления обменов[:ru_RU]
 cat: directions
 */	

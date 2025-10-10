@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) { exit(); }
 /*
 title: [en_US:]Affiliate program[:en_US][ru_RU:]Партнерская программа[:ru_RU]
 description: [en_US:]Affiliate program[:en_US][ru_RU:]Партнерская программа[:ru_RU]
-version: 2.7.2
+version: 2.7.3
 category: [en_US:]Users[:en_US][ru_RU:]Пользователи[:ru_RU]
 cat: user 
 */

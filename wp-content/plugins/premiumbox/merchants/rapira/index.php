@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) { exit(); }
 /*
 title: [en_US:]Rapira Crypto[:en_US][ru_RU:]Rapira Crypto[:ru_RU]
 description: [en_US:]Rapira Crypto merchant[:en_US][ru_RU:]мерчант Rapira Crypto[:ru_RU]
-version: 2.7.0
+version: 2.7.1
 */
 
 if (!class_exists('Ext_Merchant_Premiumbox')) { return; }

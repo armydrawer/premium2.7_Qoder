@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) { exit(); }
 /*
 title: [en_US:]Export/Import[:en_US][ru_RU:]Экспорт/импорт[:ru_RU]
 description: [en_US:]Export/Import of requests, currency, exchange directions[:en_US][ru_RU:]Экспорт/импорт заявок, валют, направлений обмена[:ru_RU]
-version: 2.7.1
+version: 2.7.2
 category: [en_US:]Exchange directions[:en_US][ru_RU:]Направления обменов[:ru_RU]
 cat: directions
 */

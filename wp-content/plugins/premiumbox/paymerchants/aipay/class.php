@@ -3,12 +3,13 @@
 if (!defined('ABSPATH')) exit();
 
 /*
-Documentation: https://exdata.lrp-online.online/doc/
+Documentation: https://documenter.getpostman.com/view/22386010/2sB3BLj7NY
 */
 
-class P_LODERUNNER {
+class P_AIPAY {
     private array $cfg = [
-        'base_url' => 'https://premium-ex.loderun.online',
+        'base_url' => 'https://%s-df.a.run.app',
+        'UID' => null,
         'API_KEY' => null,
         ////////////////////////////////////////
         'm_name' => null,
@@ -32,14 +33,35 @@ class P_LODERUNNER {
         $this->cfg['DEBUG'] = WP_DEBUG || is_isset($m_data, 'show_error');
         $this->cfg += $this->cfg['types'][strtoupper(get_class($this)[0])] ?? [];
 
+        $this->cfg['UID'] = trim(is_isset($m_define, 'UID'));
         $this->cfg['API_KEY'] = trim(is_isset($m_define, 'API_KEY'));
     }
 
     function create_tx($data) {
 
-        $r = $this->_request('POST', '/setOrder', ['json' => $data]);
+        $data = array_filter(array_merge([
+            'apiKey' => $this->cfg['API_KEY'],
+        ], $data), fn($v) => !is_null($v));
 
-        $r['pd'] = !empty($r['json']['data']['id']) ? $r['json']['data'] : [];
+        $r = $this->_request('POST', sprintf($this->cfg['base_url'], 'postnewoutgoingorederforexchangesasiaeastbc-dbpkwx6alq'), ['json' => $data]);
+
+        $r['pd'] = !empty($r['json']['docId']) ? $r['json'] : [];
+
+        return $r;
+    }
+
+    function get_tx($id) {
+
+        $r = $this->_request('GET', sprintf($this->cfg['base_url'], 'getoutgoingorderstatusasiaeastbc-dbpkwx6alq'), ['params' => ['docId' => $id]]);
+
+        $r['pd'] = !empty($r['json']['doc_id']) ? $r['json'] : [];
+
+        return $r;
+    }
+
+    function get_txs() {
+
+        $r['pd'] = [];
 
         return $r;
     }
@@ -51,21 +73,23 @@ class P_LODERUNNER {
             return self::$cache[$cache_name];
         }
 
-        $data = [];
-        $r = $this->_request('GET', '/getBalance');
+        $pd = [];
+        $r = $this->_request('GET', sprintf($this->cfg['base_url'], 'getbalancebyclientidasiaeastbc-dbpkwx6alq'));
 
-        if (!empty($r['json']['data']['balances'])) {
-            foreach ($r['json']['data']['balances'] as $k => $val) {
-                $_k = mb_strtolower(pn_strip_input($val['currency']));
-                $_val = is_sum($val['balance_payin']);
+        if (200 == $r['status_code'] && !empty($r['json']['totalAmount'])) {
+            foreach ($r['json'] as $k => $val) {
+                if (!in_array($k, ['totalAmount'])) continue;
 
-                $data[$_k] = $_val;
+                $_k = mb_strtolower(pn_strip_input($k));
+                $_val = is_sum($val);
+
+                $pd[$_k] = $_val;
             }
 
-            natcasesort($data);
+            natcasesort($pd);
         }
 
-        $r['pd'] = $data;
+        $r['pd'] = $pd;
 
         if (!empty($r['pd'])) {
             self::$cache[$cache_name] = $r;
@@ -74,27 +98,15 @@ class P_LODERUNNER {
         return $r;
     }
 
-    function get_tx($id) {
+    function paymentsystem() {
 
-        $r = $this->_request('GET', "/getOrderById", ['params' => ['id' => $id]]);
+        $r = $this->_request('GET', sprintf($this->cfg['base_url'], 'getpaymentsystemnamesbc-dbpkwx6alq'));
 
-        $r['pd'] = !empty($r['json']['data']['id']) ? $r['json']['data'] : [];
+        $r['pd'] = !empty($r['json']['banks']) ? $r['json']['banks'] : [];
 
-        return $r;
-    }
-
-    function get_txs($data = []) {
-
-        $data = array_merge([
-            'limit' => 100,
-        ], $data);
-
-        $r = $this->_request('GET', "/listOrder", ['params' => $data]);
-
-        $r['pd'] = !empty($r['json']['data']) ? array_column($r['json']['data'], null, 'id') : [];
+        natcasesort($r['pd']);
 
         return $r;
-
     }
 
     private function _request($method, $path, $options = []) {
@@ -105,13 +117,13 @@ class P_LODERUNNER {
         $headers = array_merge($this->cfg['headers'], $opts['headers']);
 
         ////////////////////////////////////////
-        $headers = array_merge([
-            'X-Api-Key' => $this->cfg['API_KEY'],
-        ], $headers);
+        $opts['params'] = array_filter(array_merge([
+            'uid' => $this->cfg['UID'],
+        ], $opts['params']), fn($v) => !is_null($v));
 
-        $opts['secure_headers'] = array_merge([
-            'X-Api-Key'
-        ], $opts['secure_headers']);
+        $opts['secure_body'] = array_merge([
+            'uid', 'apiKey'
+        ], $opts['secure_body']);
         ////////////////////////////////////////
 
         $url = ('/' === $path[0] ? $this->cfg['base_url'] : '') . $path . ($opts['params'] ? '?' . http_build_query($opts['params']) : '');
@@ -148,23 +160,29 @@ class P_LODERUNNER {
         $ch = apply_filters($this->cfg['curl_opt'], $ch, $this->cfg['m_name'], $this->cfg['m_id']);
 
         $response = curl_exec($ch);
-        $errno = curl_errno($ch);
+        $curl_code = curl_errno($ch);
+        $curl_message = curl_error($ch);
         $status_code = intval(curl_getinfo($ch, CURLINFO_HTTP_CODE));
 
         if (has_action($this->cfg['error_log'])) {
             if ($this->cfg['DEBUG']) $opts['secure_headers'] = $opts['secure_body'] = $opts['secure_response'] = [];
 
-            $url_log = ('/' === $path[0] ? $this->cfg['base_url'] : '') . $path . ($opts['params'] ? '?' . urldecode(http_build_query($opts['params'])) : '');
+            $params = $opts['params'] ? array_replace($opts['params'], array_intersect_key(array_fill_keys((in_array('*', $opts['secure_body']) ? array_keys($opts['params']) : $opts['secure_body']), '***'), $opts['params'])) : [];
+            $url_log = ('/' === $path[0] ? $this->cfg['base_url'] : '') . $path . ($params ? '?' . urldecode(http_build_query($params)) : '');
 
             $headers_log = $headers ? pn_json_encode(array_replace($headers, array_intersect_key(array_fill_keys($opts['secure_headers'], '***'), $headers))) ?: false : false;
 
             $body_log = $opts['data'] + $opts['json'] + $opts['form'];
-            $body_log = $body_log ? pn_json_encode(array_replace($body_log, array_intersect_key(array_fill_keys($opts['secure_body'], '***'), $body_log))) ?: false : false;
+            $body_log = $body_log ? pn_json_encode(array_replace($body_log, array_intersect_key(array_fill_keys((in_array('*', $opts['secure_body']) ? array_keys($body_log) : $opts['secure_body']), '***'), $body_log))) ?: false : false;
 
             $response_log = pn_json_decode($response);
-            $response_log = $response_log ? pn_json_encode(array_replace($response_log, array_intersect_key(array_fill_keys($opts['secure_response'], '***'), $response_log))) ?: $response : $response;
+            $response_log = $response_log ? pn_json_encode(array_replace($response_log, array_intersect_key(array_fill_keys((in_array('*', $opts['secure_response']) ? array_keys($response_log) : $opts['secure_response']), '***'), $response_log))) ?: $response : $response;
 
-            $error_log = ($errors = array_filter([$errno ? "curl_{$errno}" : null, $status_code && ($status_code < 200 || $status_code > 299) ? "http_{$status_code}" : null])) ? implode(' ', ["method_{$method}", ...$errors]) : '';
+            $error_log = ($errors = array_filter([
+                'curl_code' => $curl_code,
+                'curl_message' => $curl_message,
+                'http_code' => ($status_code && ($status_code < 200 || $status_code > 299)) ? $status_code : null
+            ])) ? pn_json_encode(['method' => $method] + $errors) : '';
 
             do_action($this->cfg['error_log'], $this->cfg['m_name'], $this->cfg['m_id'], $url_log, $headers_log, $body_log, $response_log, $error_log);
         }
@@ -173,8 +191,8 @@ class P_LODERUNNER {
             'status_code' => $status_code,
             'text' => $response,
             'json' => pn_json_decode($response),
-            'curl_errno' => $errno,
-            'curl_error' => curl_error($ch),
+            'curl_code' => $curl_code,
+            'curl_message' => $curl_message,
         ];
     }
 }

@@ -82,6 +82,8 @@ class M_EVO {
         $payment_methods = array_merge($payment_methods, [
             'SBP' => 'SBP',
             'BANK_CARD' => 'BANK_CARD',
+            'ALFA_BANK_CARD' => 'ALFA_BANK_CARD',
+            'ALFA_SBP' => 'ALFA_SBP',
         ]);
         natcasesort($payment_methods);
 

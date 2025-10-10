@@ -210,11 +210,13 @@ if (!class_exists('Rapira')) {
 					
 					if (isset($res2['address'])) {
 						$data['address'] = $res2['address'];
+						$data['memo'] = $res2['memo'] ?? '';
 						break;
 					}
 				} 
 			} elseif (isset($res['id'], $res['address']) and $res['address']) {
 				$data['address'] = $res['address'];
+                $data['memo'] = $res['memo'] ?? '';
 			}
 			
 			return $data;

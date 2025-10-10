@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) { exit(); }
 /*
 title: [en_US:]Archiving of old requests[:en_US][ru_RU:]Архивация старых заявок[:ru_RU]
 description: [en_US:]!Do not disable the module after activation! Archiving of old requests with the creation date longer than two months[:en_US][ru_RU:]!Не отключать модуль после его активации! Архивация старых заявок со сроком создания более двух месяцев[:ru_RU]
-version: 2.7.0
+version: 2.7.2
 category: [en_US:]Orders[:en_US][ru_RU:]Заявки[:ru_RU]
 cat: req
 */

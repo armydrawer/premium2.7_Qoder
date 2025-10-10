@@ -347,6 +347,12 @@ function def_new_parser_links($links) {
         'birg_key' => 'nicepay',
     ];
 
+    $links['hybridrate'] = [
+        'title' => 'Hybrid-rate.com',
+        'url' => 'https://hybrid-rate.com/currency-rates.json',
+        'birg_key' => 'hybridrate',
+    ];
+
     return $links;
 }
 
@@ -362,6 +368,34 @@ add_filter('set_parser_pairs', 'def_set_parser_pairs', 10, 4);
 function def_set_parser_pairs($parser_pairs, $output, $birg_key, $up_time) {
 
     $cs = 20;
+
+    if ('hybridrate' == $birg_key) {
+
+        $r = pn_json_decode($output);
+
+        if (!empty($r)) {
+            foreach ($r as $key => $item) {
+                $exp = explode('-', $key);
+
+                $give = mb_strtolower(is_isset($exp, 0));
+                $get = mb_strtolower(is_isset($exp, 1));
+                $type = mb_strtolower(is_isset($exp, 2));
+                $rate = is_sum($item, $cs);
+                if (!$give || !$rate) continue;
+
+                $k = implode('_', array_filter([$birg_key, $give, $get, $type]));
+                $parser_pairs[$k] = [
+                    'title' => $type,
+                    'course' => $rate,
+                    'birg' => $birg_key,
+                    'give' => mb_strtoupper($give),
+                    'get' => mb_strtoupper($get),
+                    'up' => $up_time,
+                ];
+            }
+        }
+
+    }
 
     if ('nicepay' == $birg_key) {
 

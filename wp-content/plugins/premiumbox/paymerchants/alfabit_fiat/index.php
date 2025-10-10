@@ -3,20 +3,20 @@
 if (!defined('ABSPATH')) exit();
 
 /*
-title: [en_US:]Loderunner[:en_US][ru_RU:]Loderunner[:ru_RU]
-description: [en_US:]Loderunner automatic payouts[:en_US][ru_RU:]авто выплаты Loderunner[:ru_RU]
-version: 2.7.1
+title: [en_US:]AlfaBit Fiat[:en_US][ru_RU:]AlfaBit Fiat[:ru_RU]
+description: [en_US:]AlfaBit Fiat automatic payouts[:en_US][ru_RU:]авто выплаты AlfaBit Fiat[:ru_RU]
+version: 2.7.0
 */
 
 if (!class_exists('Ext_AutoPayut_Premiumbox')) return;
 
-if (!class_exists('paymerchant_loderunner')) {
-    class paymerchant_loderunner extends Ext_AutoPayut_Premiumbox {
+if (!class_exists('paymerchant_alfabit_fiat')) {
+    class paymerchant_alfabit_fiat extends Ext_AutoPayut_Premiumbox {
         private array $disable_opts = ['checkpay'];
-        private array $sum_format = [2, 'down'];
+        private array $sum_format = [];
         private array $tx_statuses = [
             'success' => ['SUCCESS'],
-            'payouterror' => ['CANCELED', 'RETURN', 'ERROR'],
+            'payouterror' => ['FAILED', 'INVOICENOTCREATED', 'INVOICENOTPAYED', 'INVOICECHECKBLOCKED', 'TRANSFERBLOCKED', 'EXCHANGEBLOCKED', 'WITHDRAWBLOCKED'],
         ];
 
         function __construct($file, $title) {
@@ -66,10 +66,19 @@ if (!class_exists('paymerchant_loderunner')) {
 
             ////////////////////////////////////////
 
+            $payment_methods = [0 => __('Config file is not configured', 'pn')];
+
             if (1 == $place && 'success' == $this->settingtext('success', $id)) {
                 $work_status = sprintf('<strong class="bred">%s</strong>', mb_strtoupper(__('error', 'pn')));
+                $payment_methods = [0 => mb_strtoupper(__('error', 'pn'))];
 
-                $api = new P_LODERUNNER($this->name, $id, $m_define, $m_data);
+                $api = new P_ALFABITF($this->name, $id, $m_define, $m_data);
+
+                $r = $api->payment_methods_list(is_isset($data, 'add_payment_method'));
+
+                if ($r['pd']) {
+                    $payment_methods = [0 => sprintf('-- %s --', __('Select method', 'pn'))] + $r['pd'];
+                }
 
                 $r = $api->balance();
 
@@ -80,25 +89,24 @@ if (!class_exists('paymerchant_loderunner')) {
                 }
             }
 
-            $options['enabled_stats'] = [
-                'view' => 'select',
-                'title' => __('Statistics', 'pn'),
-                'options' => [
-                    0 => __('No', 'pn'),
-                    1 => __('Yes', 'pn')
-                ],
-                'default' => is_isset($data, 'enabled_stats'),
-                'name' => 'enabled_stats',
-                'work' => 'int',
+            $options['payment_method'] = [
+                'view' => 'select_search',
+                'title' => __('Payment method', 'pn') . ' <span class="bred">*</span>',
+                'options' => $payment_methods,
+                'default' => is_isset($data, 'payment_method'),
+                'name' => 'payment_method',
+                'work' => 'input',
             ];
+
+            $options = $this->_add_field($options, $data, 'payment_method');
 
             ////////////////////////////////////////
 
             $options['work_status'] = ['view' => 'textfield', 'title' => __('Work status', 'pn'), 'default' => $work_status];
 
             $text_add_info = array_filter([
-                'cron_url' => !in_array('ext_cron_url', $this->disable_opts) ? '<strong>' . __('Cron file', 'pn') . ':</strong> <a href="' . get_mlink("ap_{$id}_cron" . chash_url($id, 'ap')) . '" target="_blank">' . get_mlink("ap_{$id}_cron" . chash_url($id, 'ap')) . '</a>' : null,
-                'webhook_url' => !in_array('ext_webhook_url', $this->disable_opts) ? '<strong>Webhook URL:</strong> <a href="' . get_mlink("ap_{$id}_webhook" . hash_url($id, 'ap')) . '" target="_blank">' . get_mlink("ap_{$id}_webhook" . hash_url($id, 'ap')) . '</a>' : null,
+                'cron_url' => !in_array('ext_cron_url', $this->disable_opts) ? sprintf('<strong>%s:</strong> <a href="%s" target="_blank">%2$s</a>', __('Cron file', 'pn'), get_mlink("ap_{$id}_cron" . chash_url($id, 'ap'))) : null,
+                'webhook_url' => !in_array('ext_webhook_url', $this->disable_opts) ? sprintf('<strong>%s:</strong> <a href="%s" target="_blank">%2$s</a>', 'Webhook URL', get_mlink("ap_{$id}_webhook" . hash_url($id, 'ap'))) : null,
             ]);
 
             if ($text_add_info) {
@@ -128,7 +136,7 @@ if (!class_exists('paymerchant_loderunner')) {
             try {
                 $m_data = get_paymerch_data($m_id);
 
-                $api = new P_LODERUNNER($this->name, $m_id, $m_defin, $m_data);
+                $api = new P_ALFABITF($this->name, $m_id, $m_defin, $m_data);
 
                 return $this->_sum_format(is_isset($api->balance()['pd'], $purse), $m_id);
             } catch (Exception $e) {
@@ -144,19 +152,17 @@ if (!class_exists('paymerchant_loderunner')) {
             // BID DATA
             $tx = null;
             $item_id = $item->id;
-            $currency_id_give = $item->currency_id_give;
-            $currency_id_get = $item->currency_id_get;
-            $account = pn_strip_input($item->account_get);
-            $phone = pn_strip_input(is_isset($unmetas, 'get_phone') ?: is_isset($unmetas, 'phone') ?: $item->account_get);
-            $cardholder = pn_strip_input(is_isset($unmetas, 'get_cardholder') ?: is_isset($unmetas, 'cardholder') ?: implode(' ', array_filter([$item->last_name, $item->first_name])));
-            $bank_name = pn_strip_input(is_isset($unmetas, 'get_bankname') ?: is_isset($unmetas, 'bankname') ?: sprintf('%s %s', pn_strip_input($item->psys_get), is_site_value($item->currency_code_get)));
-            $tg = pn_strip_input(is_isset($unmetas, 'dir_tg') ?: is_isset($unmetas, 'get_tg') ?: is_isset($unmetas, 'tg'));
+            $account = pn_strip_input(preg_replace('/\D/', '', is_isset($unmetas, 'get_phone') ?: is_isset($unmetas, 'phone') ?: $item->account_get));
 
             // M DATA
             $pay_sum = $this->_sum_format(is_paymerch_sum($item, $paymerch_data), $m_id);
             $note = trim(pn_maxf_mb(get_text_paymerch($m_id, $item, $pay_sum), 150));
-            $cd = get_currency_data([$currency_id_give, $currency_id_get]);
-            $enabled_stats = absint(is_isset($paymerch_data, 'enabled_stats'));
+            $pm = pn_strip_input(is_isset($paymerch_data, 'payment_method'));
+            [$pm_currency, $pm_pm, $pm_alias, $pm_code] = array_pad(explode(':::', $pm, 4), 4, null);
+
+            if (!$error && !$account) {
+                $error[] = __('Wrong client wallet', 'pn');
+            }
 
             if (!$error && !$this->set_ap_status($item, $test)) {
                 $error[] = 'Database error';
@@ -164,41 +170,51 @@ if (!class_exists('paymerchant_loderunner')) {
 
             if (!$error) {
                 try {
-                    $api = new P_LODERUNNER($this->name, $m_id, $m_defin, $paymerch_data);
+                    $api = new P_ALFABITF($this->name, $m_id, $m_defin, $paymerch_data);
+
+                    $r_pms = $api->payment_methods();
 
                     $data = [
-                        'order_id' => "ap_{$item_id}",
-                        'order_number' => $item_id,
+                        'currency' => $pm_currency,
+                        'paymentMethod' => $pm_pm,
+                        'providerOutAliasCode' => $pm_alias,
+                        'code' => $pm_code,
                         'amount' => $pay_sum,
-                        'payout' => [
-                            'currency' => isset($cd[$currency_id_get]) ? $cd[$currency_id_get]->xml_value : '',
-                            'ext_bank_name' => $bank_name,
-                            'card_number' => $account,
-                            'client_name' => $cardholder,
-                            'phone' => $item->user_phone,
-                            'phone_sbp' => $phone,
-                            'tg' => $tg,
-                            'email' => $item->user_email,
-                            'comment' => $note,
-                        ],
+                        'recipient' => $account,
+                        'callbackUrl' => apply_filters('custom_url', get_mlink("ap_{$m_id}_webhook" . hash_url($m_id, 'ap')), 'webhook', $this->name, $m_id),
+                        'details' => [],
                     ];
 
-                    if ($enabled_stats) {
-                        $data['paystat'] = [
-                            'currency_from' => isset($cd[$currency_id_give]) ? $cd[$currency_id_give]->xml_value : '',
-                            'currency_to' => isset($cd[$currency_id_get]) ? $cd[$currency_id_get]->xml_value : '',
-                            'amount' => $pay_sum,
-                            'rate' => is_sum($item->course_get / $item->course_give),
-                        ];
+                    if ($note) $data['comment'] = $note;
+
+                    $fields = $r_pms['pd'][$pm_code]['requiredFields'] ?? [];
+                    if ($fields) {
+                        foreach ($fields as $item) {
+                            $id = mb_strtolower($item);
+                            $val = is_isset($unmetas, "get_{$id}") ?: is_isset($unmetas, $id);
+
+                            if ('first_name' == $id) {
+                                $data['details'][$item] = pn_strip_input($val ?: $item->first_name);
+                            } elseif ('last_name' == $id) {
+                                $data['details'][$item] = pn_strip_input($val ?: $item->last_name);
+                            } elseif ('email' == $id) {
+                                $data['details'][$item] = pn_strip_input($val ?: $item->user_email);
+                            } else {
+                                $data['details'][$item] = pn_strip_input($val);
+                            }
+                        }
                     }
 
-                    $tx = $api->create_tx($data)['pd'];
+                    if (!$data['details']) unset($data['details']);
 
-                    if ($tx) {
-                        $tx = $api->get_tx($tx['id'])['pd'];
+                    $r = $api->create_tx($data);
+
+                    if ($r['pd']) {
+                        $tx = $api->get_tx($r['pd']['uid'])['pd'];
                     } else {
+                        if ($r['json']) unset($r['text']);
                         $error[] = __('Payout error', 'pn');
-                        $error[] = pn_json_encode($tx);
+                        $error[] = pn_json_encode($r);
                         $pay_error = 1;
                     }
                 } catch (Exception $e) {
@@ -210,10 +226,10 @@ if (!class_exists('paymerchant_loderunner')) {
             if ($error) {
                 $this->reset_ap_status($error, $pay_error, $item, $place, $m_id, $test);
             } else {
-                $tx_id = !empty($tx['id']) ? pn_strip_input($tx['id']) : null;
-                $tx_status = !empty($tx['status_code']) ? mb_strtoupper($tx['status_code']) : null;
-                $tx_amount = !empty($tx['amountPay']) ? $this->_sum_format($tx['amountPay'], $m_id) : null;
-                $tx_hash = '';
+                $tx_id = pn_strip_input(is_isset($tx, 'uid'));
+                $tx_status = mb_strtoupper(is_isset($tx, 'status'));
+                $tx_amount = $this->_sum_format(is_isset($tx, 'amountOutFact'), $m_id);
+                $tx_hash = pn_strip_input(is_isset($tx, 'txId'));
 
                 $new_status = ($tx_status && 'success' == is_isset($this->tx_statuses, $tx_status) ? 'success' : 'coldsuccess');
 
@@ -244,11 +260,22 @@ if (!class_exists('paymerchant_loderunner')) {
             $this->webhook($m_id, $m_define, $m_data);
         }
 
-        function webhook($m_id, $m_define, $m_data) {
+        private function webhook($m_id, $m_define, $m_data) {
 
             $data = pn_json_decode(file_get_contents('php://input')) ?? [];
 
             do_action('paymerchant_secure', $this->name, $data, $m_id, $m_define, $m_data);
+
+            $tx_id = pn_strip_input(is_isset($data, 'uid'));
+            $tx_status = mb_strtoupper(is_isset($data, 'status'));
+            $tx_dir = mb_strtoupper(is_isset($data, 'type'));
+
+            $checked_fields = [$tx_id, $tx_status, $tx_dir];
+            if (count(array_filter($checked_fields)) !== count($checked_fields) || 'WITHDRAW' != $tx_dir || empty($this->tx_statuses[$tx_status])) {
+                wp_send_json_success();
+            }
+
+            $this->_payment_check(__FUNCTION__, $m_id, $m_define, $m_data, $tx_id);
 
             wp_send_json_success();
         }
@@ -275,7 +302,7 @@ if (!class_exists('paymerchant_loderunner')) {
 
                 $bids = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}exchange_bids WHERE " . implode(' AND ', $where));
 
-                $api = new P_LODERUNNER($this->name, $m_id, $m_define, $m_data);
+                $api = new P_ALFABITF($this->name, $m_id, $m_define, $m_data);
                 $history = (empty($bids) || $tx_id) ? null : $api->get_txs()['pd'];
 
                 foreach ($bids as $bid) {
@@ -284,10 +311,10 @@ if (!class_exists('paymerchant_loderunner')) {
 
                     $tx = is_array($tx_info) ? $tx_info : ($history[$bid_tx_id] ?? $api->get_tx($bid_tx_id)['pd']);
 
-                    $tx_id = !empty($tx['id']) ? pn_strip_input($tx['id']) : null;
-                    $tx_status = !empty($tx['status_code']) ? mb_strtoupper($tx['status_code']) : null;
-                    $tx_amount = !empty($tx['amountPay']) ? $this->_sum_format($tx['amountPay'], $m_id) : null;
-                    $tx_hash = '';
+                    $tx_id = pn_strip_input(is_isset($tx, 'uid'));
+                    $tx_status = mb_strtoupper(is_isset($tx, 'status'));
+                    $tx_amount = $this->_sum_format(is_isset($tx, 'amountOutFact'), $m_id);
+                    $tx_hash = pn_strip_input(is_isset($tx, 'txId'));
 
                     $checked_fields = [$tx_id, $tx_status, $tx_amount];
                     if (count(array_filter($checked_fields)) !== count($checked_fields)) {
@@ -331,14 +358,15 @@ if (!class_exists('paymerchant_loderunner')) {
 
         function _sum_format($sum, $m_id) {
 
-            if (!$m_id || get_pscript($m_id) !== $this->name) {
+            if (!$m_id || get_mscript($m_id) !== $this->name) {
                 return $sum;
             }
 
-            return is_sum($sum, ...$this->sum_format);
+            $sum = is_sum($sum, ...array_slice($this->sum_format, 1));
+            return is_string($sum) && is_isset($this->sum_format, 0) ? (float)$sum : $sum;
         }
 
-        function _add_field($options, $data, $name, $help = false) {
+        private function _add_field($options, $data, $name, $help = false) {
 
             $options["add_{$name}"] = [
                 'view' => 'textarea',
@@ -361,4 +389,4 @@ if (!class_exists('paymerchant_loderunner')) {
     }
 }
 
-new paymerchant_loderunner(__FILE__, 'Loderunner');
+new paymerchant_alfabit_fiat(__FILE__, 'AlfaBit Fiat');

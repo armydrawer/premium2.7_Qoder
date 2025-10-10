@@ -45,7 +45,7 @@ function pn_user_register_data_pp($array, $user_id) {
 	return $array;
 }
 
-add_action('template_redirect', 'init_pp', 8);
+add_action('template_redirect', 'init_pp', 2);
 function init_pp() {
 	global $wpdb, $premiumbox;
 	
