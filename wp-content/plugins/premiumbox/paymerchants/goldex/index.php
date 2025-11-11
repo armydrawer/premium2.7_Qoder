@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) exit();
 /*
 title: [en_US:]GoldEx[:en_US][ru_RU:]GoldEx[:ru_RU]
 description: [en_US:]GoldEx automatic payouts[:en_US][ru_RU:]авто выплаты GoldEx[:ru_RU]
-version: 2.6.4
+version: 2.7.4
 */
 
 if (!class_exists('Ext_AutoPayut_Premiumbox')) return;
