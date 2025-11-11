@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) exit();
 /*
 title: [en_US:]ABCEX Crypto[:en_US][ru_RU:]ABCEX Crypto[:ru_RU]
 description: [en_US:]ABCEX Crypto automatic payouts[:en_US][ru_RU:]авто выплаты ABCEX Crypto[:ru_RU]
-version: 2.7.1
+version: 2.7.2
 */
 
 if (!class_exists('Ext_AutoPayut_Premiumbox')) return;

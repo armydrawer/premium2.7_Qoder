@@ -1,21 +1,73 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PremiumBox Theme\n"
-"POT-Creation-Date: 2022-09-19 20:41+0300\n"
-"PO-Revision-Date: 2022-09-19 20:41+0300\n"
+"POT-Creation-Date: 2023-03-21 18:00+0300\n"
+"PO-Revision-Date: 2025-09-04 14:02+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.3.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: js\n"
+
+#: settings/footer.php
+msgid "Dzen"
+msgstr "Дзен"
+
+#: settings/footer.php
+msgid "Дзен link"
+msgstr "Дзен ссылка"
+
+#: settings/footer.php
+msgid "Footer logo"
+msgstr "Логотип в нижней части"
+
+#: settings/header.php
+msgid "Mobile logo"
+msgstr "Мобильный логотип"
+
+#: settings/header.php:22
+msgid "E-mail name"
+msgstr "E-mail название"
+
+#: settings/header.php:22
+msgid "E-mail link"
+msgstr "E-mail ссылка"
+
+#: settings/header.php:22
+msgid "header"
+msgstr "шапка"
+
+#: settings/header.php:22
+msgid "Support button name"
+msgstr "Наименование кнопки поддержки"
+
+#: settings/home.php:22
+msgid "Table infoblock"
+msgstr "Инфоблок таблицы"
+
+#: settings/home.php:22
+msgid "Join us"
+msgstr "Присоединяйтесь"
+
+#: settings/home.php:22
+msgid "Block"
+msgstr "Блок"
+
+#: settings/home.php:22
+msgid "First block"
+msgstr "Первый блок"
+
+#: settings/home.php:22
+msgid "Second block"
+msgstr "Второй блок"
 
 #: settings/home.php:22
 msgid "Banners"
@@ -46,6 +98,46 @@ msgid "Banner 6"
 msgstr "Баннер 6"
 
 #: settings/home.php:22
+msgid "Merch"
+msgstr "Мерч"
+
+#: settings/home.php:22
+msgid "Merch 1"
+msgstr "Мерч 1"
+
+#: settings/home.php:22
+msgid "Merch 2"
+msgstr "Мерч 2"
+
+#: settings/home.php:22
+msgid "Merch 3"
+msgstr "Мерч 3"
+
+#: settings/home.php:22
+msgid "Merch 4"
+msgstr "Мерч 4"
+
+#: settings/home.php:22
+msgid "Merch 5"
+msgstr "Мерч 5"
+
+#: settings/home.php:22
+msgid "Merch 6"
+msgstr "Мерч 6"
+
+#: settings/home.php:22
+msgid "Merch block"
+msgstr "Блок мерча"
+
+#: settings/home.php:22
+msgid "Merch banners"
+msgstr "Баннеры мерча"
+
+#: settings/home.php:22
+msgid "Merch link"
+msgstr "Ссылка мерча"
+
+#: settings/home.php:22
 msgid "Banners block"
 msgstr "Блок баннеров"
 
@@ -54,295 +146,8 @@ msgid "Banner link"
 msgstr "Ссылка баннера"
 
 #: settings/home.php:22
-msgid "Banner button text"
-msgstr "Текст кнопки баннера"
-
-#: settings/home.php:22
-msgid "Image (size 336x426 px )"
-msgstr "Картинка (размер 336x426 px)"
-
-#: change/promo.php:8 change/promo.php:13 change/promo.php:24
-#: includes/promo_block.php:74
-msgid "Promo block"
-msgstr "Блок розыгрыша"
-
-#: change/promo.php:30
-msgid "Promo display"
-msgstr "Отображение розыгрыша"
-
-#: change/promo.php:45
-msgid "Promo"
-msgstr "Розыгрыш"
-
-#: change/promo.php:45
-msgid "Timer"
-msgstr "Таймер"
-
-#: change/promo.php:45
-msgid "Timer title"
-msgstr "Заголовок таймера"
-
-#: change/promo.php:45
-msgid "Date end"
-msgstr "Дата окончания"
-
-#: change/promo.php:45
-msgid "Promo reviews"
-msgstr "Отзывы розыгрыша"
-
-#: change/promo.php:45
-msgid "Promo bank"
-msgstr "Банк розыгрыша"
-
-#: change/promo.php:50
-msgid "Promo title"
-msgstr "Заголовок розыгрыша"
-
-#: change/promo.php:58
-msgid "Promo description"
-msgstr "Описание розыгрыша"
-
-#: change/promo.php:50
-msgid "Promo reviews title"
-msgstr "Заголовок блока Отзывы"
-
-#: change/promo.php:58
-msgid "Promo reviews count"
-msgstr "Количество отзывов"
-
-#: change/promo.php:50
-msgid "Promo bank title"
-msgstr "Заголовок блока Банк"
-
-#: change/promo.php:58
-msgid "Promo bank value"
-msgstr "Сумма призовых денег"
-
-#: change/promo.php:74
-msgid "Button text"
-msgstr "Текст кнопки"
-
-#: change/promo.php:74
-msgid "Button link"
-msgstr "Ссылка кнопки"
-
-#: change/promo.php:74
-msgid "Promo rules"
-msgstr "Правила розыгрыша"
-
-#: change/promo.php:74
-msgid "Promo rules title"
-msgstr "Заголовок правил розыгрыша"
-
-#: change/promo.php:74
-msgid "Step 1"
-msgstr "Шаг №1"
-
-#: change/promo.php:74
-msgid "Step 1 title"
-msgstr "Заголовок Шаг №1"
-
-#: change/promo.php:74
-msgid "Button text step 1"
-msgstr "Текст кнопки Шаг №1"
-
-#: change/promo.php:74
-msgid "Button link step 1"
-msgstr "Ссылка кнопки Шаг №1"
-
-#: change/promo.php:74
-msgid "Step 2"
-msgstr "Шаг №2"
-
-#: change/promo.php:74
-msgid "Step 2 title"
-msgstr "Заголовок Шаг №2"
-
-#: change/promo.php:74
-msgid "Button text step 2"
-msgstr "Текст кнопки Шаг №2"
-
-#: change/promo.php:74
-msgid "Button link step 2"
-msgstr "Ссылка кнопки Шаг №2"
-
-#: change/promo.php:74
-msgid "Step 3"
-msgstr "Шаг №3"
-
-#: change/promo.php:74
-msgid "Step 3 title"
-msgstr "Заголовок Шаг №3"
-
-#: change/promo.php:74
-msgid "Review site title"
-msgstr "Заголовок площадок отзывов"
-
-#: change/promo.php:74
-msgid "Review list title"
-msgstr "Заголовок списка отзывов"
-
-#: change/promo.php:74
-msgid "Forum list title"
-msgstr "Заголовок списка форумов"
-
-#: change/promo.php:74
-msgid "Monitoring list title"
-msgstr "Заголовок списка мониторингов"
-
-#: change/promo.php:74
-msgid "Review 1"
-msgstr "Отзыв 1"
-
-#: change/promo.php:74
-msgid "Review 2"
-msgstr "Отзыв 2"
-
-#: change/promo.php:74
-msgid "Review 3"
-msgstr "Отзыв 3"
-
-#: change/promo.php:74
-msgid "Review 4"
-msgstr "Отзыв 4"
-
-#: change/promo.php:74
-msgid "Review 5"
-msgstr "Отзыв 5"
-
-#: change/promo.php:74
-msgid "Review 6"
-msgstr "Отзыв 6"
-
-#: change/promo.php:74
-msgid "Review 7"
-msgstr "Отзыв 7"
-
-#: change/promo.php:74
-msgid "Review 8"
-msgstr "Отзыв 8"
-
-#: change/promo.php:74
-msgid "Review 9"
-msgstr "Отзыв 9"
-
-#: change/promo.php:74
-msgid "Review 10"
-msgstr "Отзыв 10"
-
-#: change/promo.php:74
-msgid "Forum 1"
-msgstr "Форум 1"
-
-#: change/promo.php:74
-msgid "Forum 2"
-msgstr "Форум 2"
-
-#: change/promo.php:74
-msgid "Forum 3"
-msgstr "Форум 3"
-
-#: change/promo.php:74
-msgid "Forum 4"
-msgstr "Форум 4"
-
-#: change/promo.php:74
-msgid "Forum 5"
-msgstr "Форум 5"
-
-#: change/promo.php:74
-msgid "Forum 6"
-msgstr "Форум 6"
-
-#: change/promo.php:74
-msgid "Forum 7"
-msgstr "Форум 7"
-
-#: change/promo.php:74
-msgid "Forum 8"
-msgstr "Форум 8"
-
-#: change/promo.php:74
-msgid "Forum 9"
-msgstr "Форум 9"
-
-#: change/promo.php:74
-msgid "Forum 10"
-msgstr "Форум 10"
-
-#: change/promo.php:74
-msgid "Monitoring 1"
-msgstr "Мониторинг 1"
-
-#: change/promo.php:74
-msgid "Monitoring 2"
-msgstr "Мониторинг 2"
-
-#: change/promo.php:74
-msgid "Monitoring 3"
-msgstr "Мониторинг 3"
-
-#: change/promo.php:74
-msgid "Monitoring 4"
-msgstr "Мониторинг 4"
-
-#: change/promo.php:74
-msgid "Monitoring 5"
-msgstr "Мониторинг 5"
-
-#: change/promo.php:74
-msgid "Monitoring 6"
-msgstr "Мониторинг 6"
-
-#: change/promo.php:74
-msgid "Monitoring 7"
-msgstr "Мониторинг 7"
-
-#: change/promo.php:74
-msgid "Monitoring 8"
-msgstr "Мониторинг 8"
-
-#: change/promo.php:74
-msgid "Monitoring 9"
-msgstr "Мониторинг 9"
-
-#: change/promo.php:74
-msgid "Monitoring 10"
-msgstr "Мониторинг 10"
-
-#: change/promo.php:74
-msgid "Link button"
-msgstr "Ссылка кнопки"
-
-#: change/promo.php:74
-msgid "Text button"
-msgstr "Текст кнопки"
-
-#: change/promo.php:74
-msgid "Forum list"
-msgstr "Список форумов"
-
-
-#: change/promo.php:74
-msgid "Rules description"
-msgstr "Описание правил"
-
-#: change/promo.php:74
-msgid "Winner"
-msgstr "Победитель"
-
-#: change/promo.php:74
-msgid "Winner name"
-msgstr "Имя победителя"
-
-#: footer.php:25
-msgid "days"
-msgstr "дней"
-
-#: footer.php:25
-msgid "hours"
-msgstr "часов"
-
+msgid "Go to the store"
+msgstr "Перейти в магазин"
 
 #: 404.php:9
 msgid "What does it mean?"
@@ -393,11 +198,11 @@ msgstr "Комментарии разрешены только для зарег
 
 #: comments.php:66
 msgid "your comment"
-msgstr "ваш комментарий"
+msgstr "Оставить комментарий"
 
 #: comments.php:66
 msgid "cancel reply"
-msgstr "отменить ответ"
+msgstr "Отменить ответ"
 
 #: comments.php:72
 msgid "Name"
@@ -405,15 +210,23 @@ msgstr "Имя"
 
 #: comments.php:77 settings/header.php:91
 msgid "E-mail"
-msgstr "Почта"
+msgstr "E-mail"
 
 #: comments.php:90
 msgid "Comment text"
-msgstr "Текст комментария"
+msgstr "Комментарий"
 
 #: comments.php:96
 msgid "Add comment"
-msgstr "Добавить комментарий"
+msgstr "Оставить комментарий"
+
+#: footer.php:25
+msgid "days"
+msgstr "дней"
+
+#: footer.php:25
+msgid "hours"
+msgstr "часов"
 
 #: footer.php:25
 msgid "electronic currency exchange service."
@@ -424,6 +237,22 @@ msgid "Dear users, right now our website is updating. Please come back later."
 msgstr ""
 "Дорогие пользователи, в данный момент происходит обновление сайта. "
 "Пожалуйста, приходите позже."
+
+#: header.php:41
+msgid "Banner"
+msgstr "Баннер"
+
+#: header.php:41
+msgid "Banner title"
+msgstr "Заголовок баннера"
+
+#: header.php:41
+msgid "Banner text"
+msgstr "Текст баннера"
+
+#: header.php:41
+msgid "Banner button link"
+msgstr "Ссылка кнопки баннера"
 
 #: header.php:41
 msgid "Menu"
@@ -453,14 +282,6 @@ msgstr "Контакты"
 msgid "to write"
 msgstr "написать"
 
-#: includes/api.php:23
-msgid "Operator online"
-msgstr "Оператор online"
-
-#: includes/api.php:27
-msgid "Operator offline"
-msgstr "Оператор offline"
-
 #: header.php:217
 msgid "Currency exchange"
 msgstr "Обмен валют"
@@ -483,7 +304,7 @@ msgstr "Ссылка на комментарий"
 
 #: includes/comment_func.php:29
 msgid "Edit comment"
-msgstr "Редактировать комментарий"
+msgstr "Редактировать"
 
 #: includes/comment_func.php:36
 msgid "Comment is moderation"
@@ -502,12 +323,36 @@ msgid "Top menu for Users"
 msgstr "Верхнее меню для пользователей"
 
 #: includes/sites_func.php:34
+msgid "Bottom menu for clients"
+msgstr "Нижнее меню 'Клиентам'"
+
+#: includes/sites_func.php:34
+msgid "Bottom menu documents"
+msgstr "Нижнее меню 'Документы'"
+
+#: includes/sites_func.php:34
+msgid "Bottom menu about service"
+msgstr "Нижнее меню 'О сервисе'"
+
+#: includes/sites_func.php:34
 msgid "Bottom menu"
 msgstr "Нижнее меню"
+
+#: includes/sites_func.php:34
+msgid "Bottom menu popular direction"
+msgstr "Нижнее меню Популярные обмены"
 
 #: includes/sites_func.php:46 sidebar.php:5
 msgid "Sidebar"
 msgstr "Боковая колонка"
+
+#: includes/widget_questions.php:10 includes/widget_questions.php:19
+msgid "General issues"
+msgstr "Общие вопросы"
+
+#: includes/widget_questions.php:29
+msgid "Answers"
+msgstr "Ответы"
 
 #: index.php:63 settings/home.php:91 single.php:34
 msgid "Category"
@@ -524,6 +369,18 @@ msgstr "Подробнее"
 #: index.php:79
 msgid "Unfortunately this section is empty"
 msgstr "К сожалению, этот раздел пустой"
+
+#: pn-homepage.php:76
+msgid "Table title"
+msgstr "Заголовок таблицы"
+
+#: pn-homepage.php:76
+msgid "Table 3 title"
+msgstr "Заголовок таблицы №3"
+
+#: pn-homepage.php:76
+msgid "Table 3 subtitle"
+msgstr "Подзаголовок таблицы №3"
 
 #: pn-homepage.php:76
 msgid "Reviews"
@@ -543,7 +400,7 @@ msgstr "Все новости"
 
 #: pn-homepage.php:252
 msgid "Currency reserve"
-msgstr "Резервы"
+msgstr "Резерв валюты"
 
 #: pn-homepage.php:286
 msgid "Show all"
@@ -562,20 +419,8 @@ msgid "Rates"
 msgstr "Курсы"
 
 #: pn-homepage.php:354
-msgid "Statistic"
-msgstr "Статистика"
-
-#: pn-homepage.php:354
-msgid "Count users"
-msgstr "Пользователей"
-
-#: pn-homepage.php:354
-msgid "Count exchanges"
-msgstr "Обменов"
-
-#: pn-homepage.php:354
-msgid "Count reviews"
-msgstr "Отзывов"
+msgid "Our merch"
+msgstr "Наш мерч"
 
 #: pn-homepage.php:393 settings/home.php:121
 msgid "Partners"
@@ -606,8 +451,8 @@ msgstr "Подробнее"
 #: settings/color_scheme.php:37
 #, php-format
 msgid ""
-"Find out more information about website appearance settings by <a href=\"%1$s"
-"\" target=\"_blank\">link</a>."
+"Find out more information about website appearance settings by <a "
+"href=\"%1$s\" target=\"_blank\">link</a>."
 msgstr ""
 "Узнайте больше о настройках внешнего вида веб сайта по <a href=\"%1$s\" "
 "target=\"_blank\">ссылке</a>."
@@ -616,29 +461,29 @@ msgstr ""
 msgid "Footer"
 msgstr "Нижняя часть сайта"
 
-#: settings/footer.php:29
-msgid "Copywriting"
-msgstr "Текст копирайта"
-
 #: settings/footer.php:8 settings/footer.php:13 settings/footer.php:24
 msgid "Social media"
 msgstr "Социальные сети"
 
-#: settings/footer.php
-msgid "Telegram name"
-msgstr "Telegram название"
+#: settings/footer.php:29
+msgid "Copywriting"
+msgstr "Текст копирайта"
+
+#: settings/footer.php:29
+msgid "About service"
+msgstr "О сервисе"
+
+#: settings/footer.php:29
+msgid "For clients"
+msgstr "Клиентам"
+
+#: settings/footer.php:29
+msgid "Documents"
+msgstr "Документы"
 
 #: settings/footer.php:38 settings/header.php:55
 msgid "Timetable"
 msgstr "График работы"
-
-#: settings/footer.php:38 settings/header.php:55
-msgid "Telegram title"
-msgstr "Telegram название"
-
-#: settings/footer.php:38 settings/header.php:55
-msgid "Telegram link"
-msgstr "Telegram ссылка"
 
 #: settings/footer.php:50 settings/header.php:67
 msgid "Phone"
@@ -663,6 +508,22 @@ msgstr "Информация"
 #: settings/header.php:8 settings/header.php:13 settings/header.php:23
 msgid "Header"
 msgstr "Шапка сайта"
+
+#: settings/header.php:28
+msgid "Color scheme switcher"
+msgstr "Переключатель цветовых схем"
+
+#: settings/header.php:28
+msgid "Only light"
+msgstr "Только светлая"
+
+#: settings/header.php:28
+msgid "Only dark"
+msgstr "Только темная"
+
+#: settings/header.php:28
+msgid "Switcher"
+msgstr "Переключатель"
 
 #: settings/header.php:28
 msgid "To fix"
@@ -712,6 +573,30 @@ msgstr "Skype"
 msgid "Telegram"
 msgstr "Telegram"
 
+#: settings/header.php:99 #: settings/footer.php:99
+msgid "Telegram title"
+msgstr "Telegram название"
+
+#: settings/header.php:99 #: settings/footer.php:99
+msgid "Telegram title 2"
+msgstr "Telegram название 2"
+
+#: settings/header.php:99 #: settings/footer.php:99
+msgid "Telegram title 3"
+msgstr "Telegram название 3"
+
+#: settings/header.php:99 #: settings/footer.php:99
+msgid "Telegram link"
+msgstr "Telegram ссылка"
+
+#: settings/header.php:99 #: settings/footer.php:99
+msgid "Telegram link 2"
+msgstr "Telegram ссылка 2"
+
+#: settings/header.php:99 #: settings/footer.php:99
+msgid "Telegram link 3"
+msgstr "Telegram ссылка 3"
+
 #: settings/header.php:107
 msgid "Viber"
 msgstr "Viber"
@@ -724,6 +609,10 @@ msgstr "WhatsApp"
 msgid "Jabber"
 msgstr "Jabber"
 
+#: settings/home.php:22
+msgid "Mobile image"
+msgstr "Картинка (мобильная)"
+
 #: settings/home.php:8 settings/home.php:13
 msgid "Homepage"
 msgstr "Главная страница"
@@ -731,6 +620,10 @@ msgstr "Главная страница"
 #: settings/home.php:24
 msgid "Information"
 msgstr "Информация"
+
+#: settings/home.php:24
+msgid "Information 2"
+msgstr "Информация 2"
 
 #: settings/home.php:29 settings/home.php:53
 msgid "Title"
@@ -778,6 +671,195 @@ msgstr "Резерв"
 msgid "Hide currency reserve in widget"
 msgstr "Скрыть резерв валюты в виджете"
 
+#: change/promo.php:30
+msgid "Forum list"
+msgstr "Список форумов"
+
+#: change/promo.php:8 change/promo.php:13 change/promo.php:24
+#: includes/promo_block.php:74
+msgid "Promo block"
+msgstr "Блок розыгрыша"
+
+#: change/promo.php:30
+msgid "Promo display"
+msgstr "Отображение розыгрыша"
+
+#: change/promo.php:45
+msgid "Promo"
+msgstr "Розыгрыш"
+
+#: change/promo.php:45
+msgid "Timer"
+msgstr "Таймер"
+
+#: change/promo.php:45
+msgid "Timer title"
+msgstr "Заголовок таймера"
+
+#: change/promo.php:45
+msgid "Date end"
+msgstr "Дата окончания"
+
+#: change/promo.php:45
+msgid "Promo reviews"
+msgstr "Отзывы розыгрыша"
+
+#: change/promo.php:45
+msgid "Promo bank"
+msgstr "Банк конкурса"
+
+#: change/promo.php:50
+msgid "Promo title"
+msgstr "Заголовок розыгрыша"
+
+#: change/promo.php:58
+msgid "Promo description"
+msgstr "Описание розыгрыша"
+
+#: change/promo.php:50
+msgid "Promo reviews title"
+msgstr "Заголовок блока 'Отзывы'"
+
+#: change/promo.php:58
+msgid "Promo reviews count"
+msgstr "Количество отзывов"
+
+#: change/promo.php:50
+msgid "Promo bank title"
+msgstr "Заголовок блока 'Банк'"
+
+#: change/promo.php:58
+msgid "Promo bank value"
+msgstr "Сумма призовых денег"
+
+#: change/promo.php:74
+msgid "Button text"
+msgstr "Текст кнопки"
+
+#: change/promo.php:74
+msgid "Button link"
+msgstr "Ссылка кнопки"
+
+#: change/promo.php:74
+msgid "Promo rules"
+msgstr "Правила розыгрыша"
+
+#: change/promo.php:74
+msgid "Promo rules title"
+msgstr "Заголовок правил розыгрыша"
+
+#: change/promo.php:74
+msgid "Step 1"
+msgstr "Шаг №1"
+
+#: change/promo.php:74
+msgid "Step 1 title"
+msgstr "Заголовок 'Шаг №1'"
+
+#: change/promo.php:74
+msgid "Button text step 1"
+msgstr "Текст кнопки 'Шаг №1'"
+
+#: change/promo.php:74
+msgid "Button link step 1"
+msgstr "Ссылка кнопки 'Шаг №1'"
+
+#: change/promo.php:74
+msgid "Step 2"
+msgstr "Шаг №2"
+
+#: change/promo.php:74
+msgid "Step 2 title"
+msgstr "Заголовок 'Шаг №2'"
+
+#: change/promo.php:74
+msgid "Button text step 2"
+msgstr "Текст кнопки 'Шаг №2'"
+
+#: change/promo.php:74
+msgid "Button link step 2"
+msgstr "Ссылка кнопки 'Шаг №2'"
+
+#: change/promo.php:74
+msgid "Step 3"
+msgstr "Шаг №3"
+
+#: change/promo.php:74
+msgid "Step 3 title"
+msgstr "Заголовок 'Шаг №3'"
+
+#: change/promo.php:74
+msgid "Review site title"
+msgstr "Заголовок площадок отзывов"
+
+#: change/promo.php:74
+msgid "Review list title"
+msgstr "Заголовок списка отзывов"
+
+#: change/promo.php:74
+msgid "Forum list title"
+msgstr "Заголовок списка форумов"
+
+#: change/promo.php:74
+msgid "Monitoring list title"
+msgstr "Заголовок списка мониторингов"
+
+#: change/promo.php:74
+msgid "Review 1"
+msgstr "Отзыв 1"
+
+#: change/promo.php:74
+msgid "Review 2"
+msgstr "Отзыв 2"
+
+#: change/promo.php:74
+msgid "Review 3"
+msgstr "Отзыв 3"
+
+#: change/promo.php:74
+msgid "Forum 1"
+msgstr "Форум 1"
+
+#: change/promo.php:74
+msgid "Forum 2"
+msgstr "Форум 2"
+
+#: change/promo.php:74
+msgid "Forum 3"
+msgstr "Форум 3"
+
+#: change/promo.php:74
+msgid "Forum 4"
+msgstr "Форум 4"
+
+#: change/promo.php:74
+msgid "Monitoring 1"
+msgstr "Мониторинг 1"
+
+#: change/promo.php:74
+msgid "Monitoring 2"
+msgstr "Мониторинг 2"
+
+#: change/promo.php:74
+msgid "Link button"
+msgstr "Ссылка кнопки"
+
+#: change/promo.php:74
+msgid "Text button"
+msgstr "Текст кнопки"
+
+#: change/promo.php:74
+msgid "Rules description"
+msgstr "Описание правил"
+
+#: change/promo.php:74
+msgid "Winner"
+msgstr "Победитель"
+
+#: change/promo.php:74
+msgid "Winner name"
+msgstr "Имя победителя"
+
 #: settings/home.php:224
 msgid "Show parsers"
 msgstr "Вывести курсы"
@@ -790,21 +872,11 @@ msgstr "Вернуться к новостям"
 msgid "Choose file"
 msgstr "Выбрать файл"
 
-#: footer.php:1
-msgid "Give"
-msgstr "Отправляете"
+#~ msgid "You send"
+#~ msgstr "Отправляете"
 
-#: footer.php:1
-msgid "Get"
-msgstr "Получаете"
-
-#: footer.php:1
-msgid "Exchange"
-msgstr "Обмен"
-
-#: header.php:1
-msgid "Connect"
-msgstr "Связаться"
+#~ msgid "You receive"
+#~ msgstr "Получаете"
 
 #~ msgid "Error!"
 #~ msgstr "Ошибка!"
@@ -994,6 +1066,9 @@ msgstr "Связаться"
 
 #~ msgid "Articles"
 #~ msgstr "Статьи"
+
+#~ msgid "Exchange"
+#~ msgstr "Обмен"
 
 #~ msgid "to"
 #~ msgstr "на"

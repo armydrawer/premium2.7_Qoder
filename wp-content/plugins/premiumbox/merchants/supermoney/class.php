@@ -1,4 +1,5 @@
 <?php
+if (!defined('ABSPATH')) exit();
 
 /*
 https://honeymoney-1.gitbook.io/rukovodstvo-merchanta
@@ -9,48 +10,43 @@ if (!class_exists('M_SUPERMONEY')) {
 
         private $m_name = "";
         private $m_id = "";
-        private $base_url = "";
-        private $main_url = "https://api-v2.moneyhoney.io";
-        private $auth_url = "https://identity.moneyhoney.io";
-        private $client_id = "";
-        private $client_secret = "";
-        private $sign_secret = "";
+        private $base_url = "https://api-v2.moneyhoney.io";
         private $token = "";
+        private $sign_secret = "";
 
-        function __construct($m_name, $m_id, $client_id, $client_secret, $sign_secret) {
+        function __construct($m_name, $m_id, $BASE_URL, $token, $sign_secret) {
+            $base_url = trim($BASE_URL);
+            $this->base_url = $base_url ? rtrim((!str_contains($base_url, '://') ? 'https://' : '') . $base_url, '/') : $this->base_url;
 
             $this->m_name = trim($m_name);
             $this->m_id = trim($m_id);
-            $this->base_url = $this->main_url;
-            $this->client_id = trim($client_id);
-            $this->client_secret = trim($client_secret);
+            $this->token = trim($token);
             $this->sign_secret = trim($sign_secret);
-            $this->set_token();
 
         }
 
         function transaction_card($data) {
-			
+
             return $this->request('/v2/merchant/transactions', $data, 1);
         }
 
         function transaction_sbp($data) {
-			
+
             return $this->request('/v2/merchant/transactions/sbp', $data, 1);
         }
 
         function transaction_account($data) {
-			
+
             return $this->request('/v2/merchant/transactions/account', $data, 1);
         }
 
         function get_transaction($id) {
-			
+
             return $this->request('/v2/merchant/transactions/' . $id);
         }
 
         function get_transactions($data = array()) {
-			
+
             $data = array_merge(array(
                 'type' => 'DEPOSIT',
                 'pageSize' => 1000,
@@ -69,7 +65,7 @@ if (!class_exists('M_SUPERMONEY')) {
         }
 
         function banks($data = array()) {
-			
+
             $data = array_merge(array(
                 'pageSize' => 999999,
             ), $data);
@@ -77,35 +73,10 @@ if (!class_exists('M_SUPERMONEY')) {
             return $this->request('/v2/merchant/banks', $data);
         }
 
-        private function set_token() {
-			
-            if ($this->token) {
-                return $this->token;
-            }
+        private function get_sign($url, $request_json, $secret, $is_post) {
 
-            $this->base_url = $this->auth_url;
-
-            $data = array(
-                'client_id' => $this->client_id,
-                'client_secret' => $this->client_secret,
-                'grant_type' => 'client_credentials',
-            );
-
-            $r = $this->request('/realms/honeymoney/protocol/openid-connect/token', $data, 1);
-
-            $this->base_url = $this->main_url;
-
-            if (isset($r['access_token'])) {
-                $this->token = trim($r['access_token']);
-            }
-
-            return $this->token;
-        }
-
-        private function get_sign($url, $request_json, $secret) {
-			
-            $signatureString = pn_json_encode($request_json) . parse_url($url, PHP_URL_PATH) . parse_url($url, PHP_URL_QUERY);
-			
+            $q = parse_url($url, PHP_URL_QUERY);
+            $signatureString = ($is_post && $request_json ? pn_json_encode($request_json) : '') . parse_url($url, PHP_URL_PATH) . ($q ? "?{$q}" : '');
             return hash_hmac('sha256', $signatureString, $secret);
         }
 
@@ -119,19 +90,13 @@ if (!class_exists('M_SUPERMONEY')) {
                 "Authorization: Bearer " . $this->token,
             );
 
-            if (empty($this->token)) {
-                $headers = array(
-                    "Content-Type: application/x-www-form-urlencoded",
-                );
-            }
-
             $url = $this->base_url . $method;
             if (!$is_post and is_array($data) and count($data) > 0) {
                 $url .= '?' . http_build_query($data);
             }
 
             if (!empty($this->token)) {
-                $headers[] = "X-Signature: " . $this->get_sign($url, $data, $this->sign_secret);
+                $headers[] = "X-Signature: " . $this->get_sign($url, $data, $this->sign_secret, $is_post);
             }
 
             $json_data = '';

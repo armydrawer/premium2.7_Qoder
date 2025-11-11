@@ -21,7 +21,7 @@
       this.element = element;
       this.selector = options.selector;
       this.speed = element.dataset.speed || 0.25;
-      this.pausable = element.dataset.pausable;
+      // this.pausable = element.dataset.pausable;
       this.reverse = element.dataset.reverse;
       this.paused = false;
       this.parent = element.parentElement;
@@ -49,7 +49,7 @@
 
     _setupContent() {
       this.content.classList.add(`${this.selector}__copy`);
-      this.content.style.display = 'inline-block';
+      this.content.style.display = 'inline-flex';
       this.contentWidth = this.content.offsetWidth;
 
       this.requiredReps = this.contentWidth > this.parentProps.width ? 2 : Math.ceil((this.parentProps.width - this.contentWidth) / this.contentWidth) + 1;
@@ -77,7 +77,7 @@
 
     _createClone() {
       const clone = document.createElement('span');
-      clone.style.display = 'inline-block';
+      clone.style.display = 'inline-flex';
       clone.classList.add(`${this.selector}__copy`)
       clone.innerHTML = this.innerContent;
       this.wrapper.appendChild(clone);
@@ -151,4 +151,3 @@
   return Marquee3k;
 
 }));
-// Marquee3k.init()

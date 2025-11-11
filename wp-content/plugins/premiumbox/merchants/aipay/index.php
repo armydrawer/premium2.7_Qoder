@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) exit();
 /*
 title: [en_US:]AI-pay[:en_US][ru_RU:]AI-pay[:ru_RU]
 description: [en_US:]AI-pay merchant[:en_US][ru_RU:]мерчант AI-pay[:ru_RU]
-version: 2.7.1
+version: 2.7.2
 */
 
 if (!class_exists('Ext_Merchant_Premiumbox')) return;
@@ -40,6 +40,8 @@ if (!class_exists('merchant_aipay')) {
                 add_filter('sum_from_pay', [$this, '_sum_format'], 100, 2);
                 add_filter('merchant_bid_sum', [$this, '_sum_format'], 100, 2);
             }
+
+            add_filter('change_bid_status', [$this, '_change_bid_status'], 2500);
         }
 
         function get_map() {
@@ -120,7 +122,7 @@ if (!class_exists('merchant_aipay')) {
                 'view' => 'select_search',
                 'title' => __('Payment method', 'pn'),
                 'options' => [
-                    0 => __('Card', 'pn'),
+                    0 => sprintf('-- %s --', __('Automatically', 'pn')),
                     1 => __('Account', 'pn'),
                     2 => __('Phone', 'pn'),
                 ],
@@ -172,8 +174,8 @@ if (!class_exists('merchant_aipay')) {
             // BID DATA
             $unmetas = @unserialize($bids_data->unmetas);
             $fullname = pn_strip_input(is_isset($unmetas, 'give_cardholder') ?: is_isset($unmetas, 'cardholder') ?: implode(' ', array_filter([$bids_data->last_name, $bids_data->first_name, $bids_data->second_name])));
-            $phone = pn_strip_input(is_isset($unmetas, 'give_phone') ?: is_isset($unmetas, 'phone') ?: $bids_data->user_phone);
-            $account_give = pn_strip_input($bids_data->account_give);
+            $phone = pn_strip_input($bids_data->user_phone);
+            $account_give = pn_strip_input(is_isset($unmetas, 'give_phone') ?: is_isset($unmetas, 'phone') ?: is_isset($unmetas, 'give_account') ?: is_isset($unmetas, 'account') ?: $bids_data->account_give);
 
             // M DATA
             $pm = absint(is_isset($m_data, 'payment_method'));
@@ -187,7 +189,7 @@ if (!class_exists('merchant_aipay')) {
                 'client' => [
                     'name' => $fullname,
                     'phone' => $phone,
-                    'bank' => '',
+                    //'bank' => '',
                     'requisite' => $account_give,
                 ],
             ];
@@ -429,6 +431,30 @@ if (!class_exists('merchant_aipay')) {
             $options["add_{$name}_help"] = ['view' => 'help', 'title' => __('Example', 'pn'), 'default' => implode('<br/>', $help)];
 
             return $options;
+        }
+
+        function _change_bid_status($data) {
+            $bid = $data['bid'];
+            $set_status = $data['set_status'];
+            $stop_action = intval(is_isset($data, 'stop'));
+
+            if ($stop_action || 'cancel' != $set_status || empty($bid->trans_in)) {
+                return $data;
+            }
+
+            $m_id = $bid->m_in;
+            if (!$m_id || get_mscript($m_id) !== $this->name) {
+                return $data;
+            }
+
+            $m_define = $this->get_file_data($m_id);
+            $m_data = get_merch_data($m_id);
+
+            $api = new M_AIPAY($this->name, $m_id, $m_define, $m_data);
+
+            $api->cancel_order($bid->trans_in);
+
+            return $data;
         }
 
     }

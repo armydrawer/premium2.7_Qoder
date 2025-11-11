@@ -1,13 +1,13 @@
 <?php
-if (!defined('ABSPATH')) { exit(); }
+if (!defined('ABSPATH')) exit();
 
 /*
 title: [en_US:]Super Money[:en_US][ru_RU:]Super Money[:ru_RU]
 description: [en_US:]Merchant Super Money[:en_US][ru_RU:]Мерчант Super Money[:ru_RU]
-version: 2.7.0
+version: 2.7.2
 */
 
-if (!class_exists('Ext_Merchant_Premiumbox')) { return; }
+if (!class_exists('Ext_Merchant_Premiumbox')) return;
 
 if (!class_exists('merchant_supermoney')) {
     class merchant_supermoney extends Ext_Merchant_Premiumbox {
@@ -27,18 +27,18 @@ if (!class_exists('merchant_supermoney')) {
         function get_map() {
 
             $map = array(
-                'CLIENT_ID' => array(
-                    'title' => '[en_US:]Client ID[:en_US]',
+                'BASE_URL' => [
+                    'title' => '[en_US:]Domain[:en_US][ru_RU:]Домен[:ru_RU]',
                     'view' => 'input',
-                    'hidden' => 1,
-                ),
-                'CLIENT_SECRET' => array(
-                    'title' => '[en_US:]Client secret[:en_US]',
+                    'hidden' => false,
+                ],
+                'TOKEN' => array(
+                    'title' => '[en_US:]Token[:en_US][ru_RU:]Токен[:ru_RU]',
                     'view' => 'input',
                     'hidden' => 1,
                 ),
                 'SIGN_SECRET' => array(
-                    'title' => '[en_US:]Signature secret[:en_US]',
+                    'title' => '[en_US:]Signature key[:en_US][ru_RU:]Ключ подписи[:ru_RU]',
                     'view' => 'input',
                     'hidden' => 1,
                 ),
@@ -50,7 +50,7 @@ if (!class_exists('merchant_supermoney')) {
         function settings_list() {
 
             $arrs = array();
-            $arrs[] = array('CLIENT_ID', 'CLIENT_SECRET', 'SIGN_SECRET');
+            $arrs[] = array('TOKEN', 'SIGN_SECRET');
 
             return $arrs;
         }
@@ -68,9 +68,9 @@ if (!class_exists('merchant_supermoney')) {
             $payment_methods = array();
             $payment_methods[0] = __('Config file is not configured', 'pn');
 
-            if (1 == $place and is_isset($m_defin, 'CLIENT_ID') and is_isset($m_defin, 'CLIENT_SECRET') and is_isset($m_defin, 'SIGN_SECRET')) {
+            if (1 == $place and is_isset($m_defin, 'TOKEN') and is_isset($m_defin, 'SIGN_SECRET')) {
 
-                $api = new M_SUPERMONEY($this->name, $m_id, is_isset($m_defin, 'CLIENT_ID'), is_isset($m_defin, 'CLIENT_SECRET'), is_isset($m_defin, 'SIGN_SECRET'));
+                $api = new M_SUPERMONEY($this->name, $m_id, is_isset($m_defin, 'BASE_URL'), is_isset($m_defin, 'TOKEN'), is_isset($m_defin, 'SIGN_SECRET'));
 
                 $r = $api->banks();
 
@@ -143,7 +143,7 @@ if (!class_exists('merchant_supermoney')) {
         }
 
         function merch_type($m_id) {
-			
+
             return 'mypaid';
         }
 
@@ -158,7 +158,7 @@ if (!class_exists('merchant_supermoney')) {
         }
 
         function init($m_id, $pay_sum, $direction, $m_defin, $m_data) {
-			global $bids_data;
+            global $bids_data;
 
             if (!$bids_data->to_account) {
 
@@ -169,12 +169,12 @@ if (!class_exists('merchant_supermoney')) {
                 $pm_bank = is_isset($pm_exp, 2);
 
                 $arr = array();
-				
-				$api = new M_SUPERMONEY($this->name, $m_id, is_isset($m_defin, 'CLIENT_ID'), is_isset($m_defin, 'CLIENT_SECRET'), is_isset($m_defin, 'SIGN_SECRET'));
+
+                $api = new M_SUPERMONEY($this->name, $m_id, is_isset($m_defin, 'BASE_URL'), is_isset($m_defin, 'TOKEN'), is_isset($m_defin, 'SIGN_SECRET'));
 
                 $data = array(
                     'extId' => 'm_' . $bids_data->id,
-					'currency' => $pm_currency,
+                    'currency' => $pm_currency,
                     'amount' => $pay_sum,
                     'callbackUrl' => get_mlink($m_id . '_status' . hash_url($m_id)),
                 );
@@ -198,7 +198,7 @@ if (!class_exists('merchant_supermoney')) {
                 if (isset($r['id'], $r['bankName'], $r['owner'], $r['paymentMethod'])) {
                     $paymentMethod = mb_strtoupper($r['paymentMethod']);
 
-					if ('SBP' == $paymentMethod) {
+                    if ('SBP' == $paymentMethod) {
                         $to_account = '+' . preg_replace('/\D/', '', $r['phoneNumber']);
                     } elseif ('ACCOUNT' == $paymentMethod) {
                         $to_account = preg_replace('/\D/', '', $r['accountNumber']);
@@ -211,7 +211,7 @@ if (!class_exists('merchant_supermoney')) {
 
                     $dest_tag_arr = array_values(array_filter(array(
                         'card_holder' => !empty($r['owner']) ? pn_strip_input($r['owner']) : null,
-						'bank' => !empty($r['bankName']) ? pn_strip_input($r['bankName']) : null,
+                        'bank' => !empty($r['bankName']) ? pn_strip_input($r['bankName']) : null,
                     )));
                     $dest_tag = empty($dest_tag_arr) ? '' : (1 == count($dest_tag_arr) ? $dest_tag_arr[0] : sprintf('%s (%s)', ...$dest_tag_arr));
                 }
@@ -223,14 +223,14 @@ if (!class_exists('merchant_supermoney')) {
                     $arr['dest_tag'] = $dest_tag;
                     $bids_data = update_bid_tb_array($bids_data->id, $arr, $bids_data);
 
-                } 
+                }
             }
-						
-			if ($bids_data->to_account) {
-				return 1;
-			}
-			
-			return 0;
+
+            if ($bids_data->to_account) {
+                return 1;
+            }
+
+            return 0;
         }
 
         function myaction($m_id, $pay_sum, $direction) {
@@ -242,7 +242,7 @@ if (!class_exists('merchant_supermoney')) {
                 $m_data = get_merch_data($m_id);
                 if ($bids_data->trans_in) {
 
-                    $api = new M_SUPERMONEY($this->name, $m_id, is_isset($m_defin, 'CLIENT_ID'), is_isset($m_defin, 'CLIENT_SECRET'), is_isset($m_defin, 'SIGN_SECRET'));
+                    $api = new M_SUPERMONEY($this->name, $m_id, is_isset($m_defin, 'BASE_URL'), is_isset($m_defin, 'TOKEN'), is_isset($m_defin, 'SIGN_SECRET'));
                     $r = $api->get_transaction($bids_data->trans_in);
 
                     if (isset($r['id'])) {
@@ -283,9 +283,9 @@ if (!class_exists('merchant_supermoney')) {
         }
 
         function cron($m_id, $m_defin, $m_data) {
-			
+
             $this->merch_cron($m_id, $m_defin, $m_data);
-			
+
         }
 
         function merch_cron($m_id, $m_defin, $m_data, $order_id = '') {
@@ -300,7 +300,7 @@ if (!class_exists('merchant_supermoney')) {
                     $where = " AND trans_in = '$order_id'";
                 }
 
-                $api = new M_SUPERMONEY($this->name, $m_id, is_isset($m_defin, 'CLIENT_ID'), is_isset($m_defin, 'CLIENT_SECRET'), is_isset($m_defin, 'SIGN_SECRET'));
+                $api = new M_SUPERMONEY($this->name, $m_id, is_isset($m_defin, 'BASE_URL'), is_isset($m_defin, 'TOKEN'), is_isset($m_defin, 'SIGN_SECRET'));
                 $history = $api->get_transactions();
 
                 $workstatus = _merch_workstatus($m_id, array('new', 'techpay', 'coldpay', 'payed'));

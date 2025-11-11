@@ -70,6 +70,11 @@ class M_AIPAY {
         return $this->_request('GET', sprintf($this->cfg['base_url'], 'getbalancebyclientidasiaeastbc-dbpkwx6alq'), ['secure_response' => ['*']]);
     }
 
+    function cancel_order($id) {
+
+        return $this->_request('GET', sprintf($this->cfg['base_url'], 'cancelincomingorderasiaeastbc-dbpkwx6alq'), ['params' => ['docId' => $id]]);
+    }
+
     private function _request($method, $path, $options = []) {
         global $premiumbox;
 

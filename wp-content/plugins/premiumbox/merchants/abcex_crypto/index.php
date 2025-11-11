@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) exit();
 /*
 title: [en_US:]ABCEX Crypto[:en_US][ru_RU:]ABCEX Crypto[:ru_RU]
 description: [en_US:]Merchant ABCEX Crypto[:en_US][ru_RU:]Мерчант ABCEX Crypto[:ru_RU]
-version: 2.7.1
+version: 2.7.2
 */
 
 if (!class_exists('Ext_Merchant_Premiumbox')) return;

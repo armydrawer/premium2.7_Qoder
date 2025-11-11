@@ -203,7 +203,7 @@ function get_status_sett($place, $in_array = 0) {
 		'paymerch' => array('payed', 'coldpay', 'partpay', 'realpay', 'verify'),
 		'cancel' => array('new', 'techpay', 'coldnew', 'amlwait', 'merchwait'),
 		'payed' => array('new', 'techpay'),
-		'bid_active' => array('coldnew', 'new', 'techpay', 'payed', 'coldpay', 'partpay', 'amlwait', 'amlerror', 'merchwait', 'mercherror'),
+		'bid_active' => array('auto','coldnew', 'new', 'techpay', 'payed', 'coldpay', 'partpay', 'amlwait', 'amlerror', 'merchwait', 'mercherror'),
 		'bid_has' => array('coldnew', 'new', 'techpay', 'payed', 'coldpay', 'partpay', 'realpay', 'verify', 'amlwait', 'amlerror', 'merchwait', 'mercherror', 'payouterror', 'scrpayerror', 'coldsuccess', 'partpayout', 'success'),
 		'apbutton' => array('realpay', 'verify', 'payed', 'partpay'),
 		'aptimeout' => array('realpay', 'verify', 'payed', 'partpay'),		
@@ -225,7 +225,7 @@ function get_status_sett($place, $in_array = 0) {
 		$status[] = 'get_auto';
 	}
 	
-	if ('bid_active' == $place or 'bid_has' == $place) {
+	if (/*'bid_active' == $place or*/ 'bid_has' == $place) {
 		$status[] = 'auto';
 	}	
 

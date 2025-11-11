@@ -1,12 +1,12 @@
-<?php  
-if( !defined( 'ABSPATH')){ exit(); } 
-get_header(); 
+<?php
+if( !defined( 'ABSPATH')){ exit(); }
+get_header();
 
 ?>
 <div class="single_news_wrap">
 
 <?php if (have_posts()) : ?>
-<?php while (have_posts()) : the_post(); 
+<?php while (have_posts()) : the_post();
 
 $blog_url = get_blog_url();
 
@@ -21,7 +21,7 @@ $image = trim(is_isset($image_arr,0));
 			<?php do_action('seodata_post', $post, 'single'); ?>
 			<div class="news-block__wrapper single_news">
 				<div class="news-block__image">
-					<img src="<?php echo $image; ?>" alt="">
+					<img class="news-img" src="<?php echo $image; ?>" alt="">
 				</div>
 				<div class="news-block__right">
 					<div class="text-content mb-m-20 mb-15">
@@ -42,14 +42,14 @@ $image = trim(is_isset($image_arr,0));
 		</div>
 
 	</div>
-				
-<?php endwhile; ?>	
-<?php endif; ?>	
 
-</div>		
+<?php endwhile; ?>
+<?php endif; ?>
 
-<?php comments_template( '', true ); ?>		
+</div>
 
-<?php 
+<?php comments_template( '', true ); ?>
+
+<?php
 
 get_footer();

@@ -58,14 +58,13 @@ function my_themeinit(){
 	$plugin_url = get_premium_url();
 
 	wp_enqueue_style('nunito-sans', is_ssl_url("https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,600,600i,700,700i&display=swap&subset=cyrillic,cyrillic-ext,latin-ext"), false, $plugin->vers());
-	wp_enqueue_script("jquery select", $plugin_url . "js/jquery-select/script.min.js", false, $plugin->vers('0.9'));
+	wp_enqueue_script("jquery select", $plugin_url . "js/jquery-select/script.min.js", false, $plugin->vers('0.7'));
 	wp_enqueue_script("jquery-table", $plugin_url ."js/jquery-table/script.min.js", false, $plugin->vers('0.5'));
 	wp_enqueue_script("jquery-checkbox", $plugin_url .'js/jquery-checkbox/script.min.js', false, $plugin->vers('0.2'));
 	wp_enqueue_script('jquery-site-js', PN_TEMPLATEURL .'/js/site.js', false, $plugin->vers());
 	wp_enqueue_style('theme-style', PN_TEMPLATEURL . "/style.css", false, $plugin->vers());
-	wp_style_add_data('theme-style', 'rtl', 'replace');
-}
 
+}
 
 function the_lang_list($wrap_class=''){
 	$list = '';
@@ -125,16 +124,49 @@ function the_flags_list($wrap_class=''){
 
 	echo $list;
 }
+
 add_filter('merchant_footer', function ($html) {
-    ob_start();
-    ?>
-    <script type='text/javascript'>
-        jQuery($ => {
-            $('body').toggleClass('light', localStorage.getItem('theme') !== 'dark').css('visibility', 'visible');
+    $change = get_option('h_change');
+    $mode   = isset($change['switcher']) ? (int)$change['switcher'] : 0; // 0=light,1=dark,2=switcher
+
+    ob_start(); ?>
+    <script>
+      (function($){
+        var $html = $('html');
+        var $body = $('body');
+        var $both = $html.add($body);
+
+        function setTheme(t){
+          t = (t === 'dark') ? 'dark' : 'light';
+          $both.removeClass('light dark').addClass(t);
+        }
+
+
+        var mode  = <?php echo (int)$mode; ?>;
+        var saved = localStorage.getItem('theme'); // 'light' | 'dark' | null
+
+        if (mode === 0) {
+          setTheme('light');
+          localStorage.removeItem('theme');
+        } else if (mode === 1) {
+          setTheme('dark');
+          localStorage.removeItem('theme');
+        } else {
+          if (saved !== 'light' && saved !== 'dark') {
+            saved = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+          }
+          setTheme(saved);
+        }
+
+
+        $body.css('visibility','visible');
+
+
+        window.addEventListener('storage', function(e){
+          if (e.key === 'theme') setTheme(e.newValue === 'dark' ? 'dark' : 'light');
         });
+      })(jQuery);
     </script>
     <?php
-    $r = ob_get_clean();
-
-    return $html . $r;
+    return $html . ob_get_clean();
 }, 1000);

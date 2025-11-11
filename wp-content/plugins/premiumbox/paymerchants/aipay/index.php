@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) exit();
 /*
 title: [en_US:]AI-pay[:en_US][ru_RU:]AI-pay[:ru_RU]
 description: [en_US:]AI-pay automatic payouts[:en_US][ru_RU:]авто выплаты AI-pay[:ru_RU]
-version: 2.7.1
+version: 2.7.2
 */
 
 if (!class_exists('Ext_AutoPayut_Premiumbox')) return;
@@ -355,7 +355,7 @@ if (!class_exists('paymerchant_aipay')) {
 
         function _sum_format($sum, $m_id) {
 
-            if (!$m_id || get_mscript($m_id) !== $this->name) {
+            if (!$m_id || get_pscript($m_id) !== $this->name) {
                 return $sum;
             }
 

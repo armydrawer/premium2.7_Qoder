@@ -22,13 +22,13 @@ function theme_insert_table_col_title(){
 
 add_filter('news_widget_one', 'theme_news_widget_one', 10, 5);
 function theme_news_widget_one($html, $item, $count, $r, $date_format){
-	$image_arr = wp_get_attachment_image_src(get_post_thumbnail_id($item->ID), 'site-thumbnail');
+	$image_arr = wp_get_attachment_image_src(get_post_thumbnail_id($item->ID), 'full');
 	$image = trim(is_isset($image_arr,0));
 	$link = get_permalink($item->ID);
 	$title = pn_strip_input(ctv_ml($item->post_title));
 
 	$html = '
-	<div class="widget_news_line">';
+	<div class="widget_news_line swiper-slide news-slide">';
 
 		if($image){
 			$html .= '
@@ -37,10 +37,11 @@ function theme_news_widget_one($html, $item, $count, $r, $date_format){
 		}
 
 		$html .= '
+		<div class="widget_news_wrapper">
 		<div class="widget_news_date">'. get_the_time('Y.m.d, H:i', $item->ID) .'</div>
-			<div class="clear"></div>
 		<div class="widget_news_title"><a href="'. $link .'" title="'. $title .'">'. $title .'</a></div>
 		<div class="widget_news_content"><a href="'. $link .'" title="'. $title .'">'. get_pn_excerpt($item, 10) .'</a></div>
+		</div>
 	</div>
 	';
 
@@ -49,6 +50,34 @@ function theme_news_widget_one($html, $item, $count, $r, $date_format){
 
 add_filter('lchange_widget_line', 'my_lchange_widget_line', 10, 2);
 function my_lchange_widget_line($widget, $bid){
+
+	$widget_old = '
+	<div class="'. $bid['place'] .'_lchange_line lchangeid_[id]">
+		<div class="'. $bid['place'] .'_lchange_body">
+
+			<div class="'. $bid['place'] .'_lchange_why">
+				<div class="'. $bid['place'] .'_lchange_ico currency_logo" style="background-image: url('. $bid['logo_give'] .');"></div>
+				<div class="'. $bid['place'] .'_lchange_txt">
+					<div class="'. $bid['place'] .'_lchange_sum">'. $bid['sum_give'] .'</div>
+					<div class="'. $bid['place'] .'_lchange_name">'. $bid['currency_code_give'] .'</div>
+				</div>
+					<div class="clear"></div>
+			</div>
+
+			<div class="'. $bid['place'] .'_lchange_arr"></div>
+
+			<div class="'. $bid['place'] .'_lchange_why">
+				<div class="'. $bid['place'] .'_lchange_ico currency_logo" style="background-image: url('. $bid['logo_get'] .');"></div>
+				<div class="'. $bid['place'] .'_lchange_txt">
+					<div class="'. $bid['place'] .'_lchange_sum">'. $bid['sum_get'] .'</div>
+					<div class="'. $bid['place'] .'_lchange_name">'. $bid['currency_code_get'] .'</div>
+				</div>
+			</div>
+				<div class="clear"></div>
+		</div>
+		<div class="'. $bid['place'] .'_lchange_date">'. $bid['editdate'] .'</div>
+	</div>
+	';
 
 	$widget = '
 	<div class="crypto">
@@ -62,7 +91,7 @@ function my_lchange_widget_line($widget, $bid){
 		</div>
 		<div class="crypto__history">
 			<div class="coin">
-				<img src="'. $bid['logo_give'] .'" alt="">
+				<div class="coin__logo"><img src="'. $bid['logo_give'] .'" alt=""></div>
 				<div class="coin__info">
 					<span>'. $bid['sum_give'] .'</span>
 					<span class="coin__name">'. $bid['currency_code_give'] .'</span>
@@ -70,7 +99,7 @@ function my_lchange_widget_line($widget, $bid){
 			</div>
 			<div class="coin_arrow"></div>
 			<div class="coin">
-				<img src="'. $bid['logo_get'] .'" alt="">
+				<div class="coin__logo"><img src="'. $bid['logo_get'] .'" alt=""></div>
 				<div class="coin__info">
 					<span>'. $bid['sum_get'] .'</span>
 					<span class="coin__name">'. $bid['currency_code_get'] .'</span>
@@ -100,10 +129,7 @@ function theme_operator(){
 
 add_filter('merchant_temps_script', 'mystyle_merchant_temps_script');
 function mystyle_merchant_temps_script($array) {
-    $array['style'] = '
-    <link rel="stylesheet" href="'.PN_TEMPLATEURL.'/css/merchant.min.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="'.PN_TEMPLATEURL.'/style.css" type="text/css" media="all" />
-
-    ';
+    $array['style'] = '<link rel="stylesheet" href="'.PN_TEMPLATEURL.'/css/merchant.min.css" type="text/css" media="all" />';
+    $array['main-style'] = '<link rel="stylesheet" href="'.PN_TEMPLATEURL.'/css/main.min.css" type="text/css" media="all" />';
     return $array;
 }

@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PremiumBox Theme\n"
-"POT-Creation-Date: 2024-05-11 17:38+0300\n"
-"PO-Revision-Date: 2024-05-11 17:38+0300\n"
+"POT-Creation-Date: 2022-09-19 20:41+0300\n"
+"PO-Revision-Date: 2022-09-19 20:41+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.3.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.1.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -34,8 +34,9 @@ msgid "Pages never existed"
 msgstr "Страницы никогда не существовало"
 
 #: 404.php:17
-msgid "Go to main page"
-msgstr ""
+#, php-format
+msgid "Please go to <a href=\"%s\">main page</a>"
+msgstr "Пожалуйста перейдите на <a href=\"%s\">главную</a>"
 
 #: comments.php:23
 #, php-format
@@ -70,7 +71,7 @@ msgstr "отменить ответ"
 msgid "Name"
 msgstr "Имя"
 
-#: comments.php:77 settings/footer.php:71 settings/header.php:112
+#: comments.php:77 settings/header.php:91
 msgid "E-mail"
 msgstr "E-mail"
 
@@ -82,13 +83,9 @@ msgstr "Текст комментария"
 msgid "Add comment"
 msgstr "Добавить комментарий"
 
-#: footer.php:61
+#: footer.php:25
 msgid "electronic currency exchange service."
 msgstr "сервис обмена электронных валют."
-
-#: footer.php:126
-msgid "Choose file"
-msgstr ""
 
 #: functions.php:20
 msgid "Dear users, right now our website is updating. Please come back later."
@@ -96,27 +93,35 @@ msgstr ""
 "Дорогие пользователи, в данный момент происходит обновление сайта. "
 "Пожалуйста, приходите позже."
 
-#: header.php:87 header.php:174 header.php:193
+#: header.php:41
+msgid "Menu"
+msgstr "Меню"
+
+#: header.php:47 header.php:123
 msgid "Exit"
 msgstr "Выйти"
 
-#: header.php:88 header.php:173 header.php:192
+#: header.php:48 header.php:124
 msgid "Account"
 msgstr "Аккаунт"
 
-#: header.php:91 header.php:177 header.php:196
-msgid "Sign in"
-msgstr "Войти"
-
-#: header.php:92 header.php:176 header.php:195
+#: header.php:50 header.php:126
 msgid "Sign up"
 msgstr "Регистрация"
 
-#: header.php:205 settings/footer.php:135
-msgid "Telegram"
-msgstr "Telegram"
+#: header.php:51 header.php:127
+msgid "Sign in"
+msgstr "Войти"
 
-#: header.php:294
+#: header.php:69
+msgid "Contacts"
+msgstr "Контакты"
+
+#: header.php:79
+msgid "to write"
+msgstr "написать"
+
+#: header.php:217
 msgid "Currency exchange"
 msgstr "Обмен валют"
 
@@ -124,7 +129,7 @@ msgstr "Обмен валют"
 msgid "Home"
 msgstr "Главная"
 
-#: includes/breadcrumb.php:44 includes/breadcrumb.php:97 pn-homepage.php:189
+#: includes/breadcrumb.php:44 includes/breadcrumb.php:97 pn-homepage.php:195
 msgid "News"
 msgstr "Новости"
 
@@ -164,87 +169,96 @@ msgstr "Нижнее меню"
 msgid "Sidebar"
 msgstr "Боковая колонка"
 
-#: index.php:47 settings/home.php:91 single.php:35
+#: index.php:63 settings/home.php:91 single.php:34
 msgid "Category"
 msgstr "Раздел"
 
-#: index.php:61 single.php:32
+#: index.php:65 single.php:36
 msgid "Tags"
 msgstr "Тэги"
 
-#: index.php:65 pn-homepage.php:219
+#: index.php:69
 msgid "Read more"
 msgstr "Подробнее"
 
-#: index.php:77
+#: index.php:79
 msgid "Unfortunately this section is empty"
 msgstr "К сожалению, этот раздел пустой"
 
-#: pn-homepage.php:75
+#: pn-homepage.php:76
 msgid "Reviews"
 msgstr "Отзывы"
 
-#: pn-homepage.php:76
+#: pn-homepage.php:111
 msgid "All reviews"
 msgstr "Все отзывы"
 
-#: pn-homepage.php:118
+#: pn-homepage.php:124
 msgid "Last exchanges"
 msgstr "Последние обмены"
 
-#: pn-homepage.php:190
+#: pn-homepage.php:232
 msgid "All news"
 msgstr "Все новости"
 
-#: pn-homepage.php:289
+#: pn-homepage.php:252
 msgid "Currency reserve"
 msgstr "Резерв валюты"
 
-#: pn-homepage.php:290
+#: pn-homepage.php:286
 msgid "Show all"
 msgstr "Показать все"
 
-#: pn-homepage.php:290
+#: pn-homepage.php:286
 msgid "Hide"
 msgstr "Скрыть"
 
-#: pn-homepage.php:332 pn-homepage.php:375
+#: pn-homepage.php:307 settings/home.php:132
+msgid "Advantages"
+msgstr "Преимущества"
+
+#: pn-homepage.php:354
 msgid "Rates"
 msgstr "Курсы"
 
-#: pn-homepage.php:447
-msgid "Statistic"
-msgstr ""
-
-#: pn-homepage.php:452
-msgid "Count users"
-msgstr ""
-
-#: pn-homepage.php:456
-#, fuzzy
-#| msgid "Last exchanges"
-msgid "Count exchanges"
-msgstr "Последние обмены"
-
-#: pn-homepage.php:460
-#, fuzzy
-#| msgid "Block reviews"
-msgid "Count reviews"
-msgstr "Блок отзывов"
-
-#: pn-homepage.php:479 settings/home.php:121
+#: pn-homepage.php:393 settings/home.php:121
 msgid "Partners"
 msgstr "Партнеры"
+
+#: settings/color_scheme.php:7 settings/color_scheme.php:12
+#: settings/color_scheme.php:22 settings/color_scheme.php:28
+msgid "Color scheme"
+msgstr "Цветовая схема"
+
+#: settings/color_scheme.php:23 settings/footer.php:25 settings/header.php:24
+#: settings/home.php:25 settings/home.php:49
+msgid "Save"
+msgstr "Сохранить"
+
+#: settings/color_scheme.php:29
+msgid "light"
+msgstr "светлая"
+
+#: settings/color_scheme.php:29
+msgid "dark"
+msgstr "темная"
+
+#: settings/color_scheme.php:36
+msgid "More info"
+msgstr "Подробнее"
+
+#: settings/color_scheme.php:37
+#, php-format
+msgid ""
+"Find out more information about website appearance settings by <a href=\"%1$s"
+"\" target=\"_blank\">link</a>."
+msgstr ""
+"Узнайте больше о настройках внешнего вида веб сайта по <a href=\"%1$s\" "
+"target=\"_blank\">ссылке</a>."
 
 #: settings/footer.php:8 settings/footer.php:13 settings/footer.php:24
 msgid "Footer"
 msgstr "Нижняя часть сайта"
-
-#: settings/footer.php:25 settings/footer.php:51 settings/footer.php:131
-#: settings/header.php:24 settings/header.php:68 settings/home.php:25
-#: settings/home.php:49
-msgid "Save"
-msgstr "Сохранить"
 
 #: settings/footer.php:29
 msgid "Copywriting"
@@ -255,63 +269,24 @@ msgid "Timetable"
 msgstr "График работы"
 
 #: settings/footer.php:50 settings/header.php:67
-msgid "Contacts"
-msgstr "Контакты"
+msgid "Phone"
+msgstr "Телефон"
 
-#: settings/footer.php:55
-#, fuzzy
-#| msgid "Telegram"
-msgid "Telegram name"
-msgstr "Telegram"
-
-#: settings/footer.php:63
+#: settings/footer.php:61 settings/footer.php:68 settings/footer.php:75
+#: settings/footer.php:82 settings/footer.php:89
 #, php-format
 msgid "Link to %s"
 msgstr "Ссылка на %s"
 
-#: settings/footer.php:79 settings/header.php:136
-msgid "Jabber"
-msgstr "Jabber"
-
-#: settings/footer.php:87 settings/header.php:88
-msgid "Phone"
-msgstr "Телефон"
-
-#: settings/footer.php:95 settings/header.php:96
-msgid "ICQ"
-msgstr "ICQ"
-
-#: settings/footer.php:103 settings/header.php:104
-msgid "Skype"
-msgstr "Skype"
-
-#: settings/footer.php:111 settings/header.php:120
-msgid "Viber"
-msgstr "Viber"
-
-#: settings/footer.php:119 settings/header.php:128
-msgid "WhatsApp"
-msgstr "WhatsApp"
-
-#: settings/footer.php:130
-msgid "Social media"
+#: settings/footer.php:95
+msgid "If you plan to use links as social buttons, use the following shortcode"
 msgstr ""
+"Если вы планируете использовать ссылки, как социальные кнопки, используйте "
+"следующий шорткод"
 
-#: settings/footer.php:143
-msgid "VK"
-msgstr ""
-
-#: settings/footer.php:151
-msgid "IG"
-msgstr ""
-
-#: settings/footer.php:159
-msgid "FB"
-msgstr ""
-
-#: settings/footer.php:167
-msgid "X"
-msgstr ""
+#: settings/footer.php:99
+msgid "Info"
+msgstr "Информация"
 
 #: settings/header.php:8 settings/header.php:13 settings/header.php:23
 msgid "Header"
@@ -353,17 +328,29 @@ msgstr "Нет"
 msgid "Yes"
 msgstr "Да"
 
-#: settings/header.php:72
-#, fuzzy
-#| msgid "Telegram"
-msgid "Telegram title"
+#: settings/header.php:75
+msgid "ICQ"
+msgstr "ICQ"
+
+#: settings/header.php:83
+msgid "Skype"
+msgstr "Skype"
+
+#: settings/header.php:99
+msgid "Telegram"
 msgstr "Telegram"
 
-#: settings/header.php:80
-#, fuzzy
-#| msgid "Telegram"
-msgid "Telegram link"
-msgstr "Telegram"
+#: settings/header.php:107
+msgid "Viber"
+msgstr "Viber"
+
+#: settings/header.php:115
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: settings/header.php:123
+msgid "Jabber"
+msgstr "Jabber"
 
 #: settings/home.php:8 settings/home.php:13
 msgid "Homepage"
@@ -411,10 +398,6 @@ msgstr "Блок отзывов"
 msgid "Last exchange"
 msgstr "Последний обмен"
 
-#: settings/home.php:132
-msgid "Advantages"
-msgstr "Преимущества"
-
 #: settings/home.php:143
 msgid "Reserve"
 msgstr "Резерв"
@@ -427,48 +410,9 @@ msgstr "Скрыть резерв валюты в виджете"
 msgid "Show parsers"
 msgstr "Вывести курсы"
 
-#: single.php:38
+#: single.php:39
 msgid "Back to news"
 msgstr "Вернуться к новостям"
-
-#, php-format
-#~ msgid "Please go to <a href=\"%s\">main page</a>"
-#~ msgstr "Пожалуйста перейдите на <a href=\"%s\">главную</a>"
-
-#~ msgid "Menu"
-#~ msgstr "Меню"
-
-#~ msgid "to write"
-#~ msgstr "написать"
-
-#~ msgid "Color scheme"
-#~ msgstr "Цветовая схема"
-
-#~ msgid "light"
-#~ msgstr "светлая"
-
-#~ msgid "dark"
-#~ msgstr "темная"
-
-#~ msgid "More info"
-#~ msgstr "Подробнее"
-
-#, php-format
-#~ msgid ""
-#~ "Find out more information about website appearance settings by <a "
-#~ "href=\"%1$s\" target=\"_blank\">link</a>."
-#~ msgstr ""
-#~ "Узнайте больше о настройках внешнего вида веб сайта по <a href=\"%1$s\" "
-#~ "target=\"_blank\">ссылке</a>."
-
-#~ msgid ""
-#~ "If you plan to use links as social buttons, use the following shortcode"
-#~ msgstr ""
-#~ "Если вы планируете использовать ссылки, как социальные кнопки, "
-#~ "используйте следующий шорткод"
-
-#~ msgid "Info"
-#~ msgstr "Информация"
 
 #~ msgid "Error!"
 #~ msgstr "Ошибка!"
@@ -638,6 +582,9 @@ msgstr "Вернуться к новостям"
 
 #~ msgid "Block news"
 #~ msgstr "Блок новостей"
+
+#~ msgid "Block reviews"
+#~ msgstr "Блок отзывов"
 
 #~ msgid "Dear users, at the moment is updated. Please check back later."
 #~ msgstr ""

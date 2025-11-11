@@ -23,10 +23,18 @@ function def_pn_theme_header_option($options){
 		'title' => __('Header','pntheme'),
 		'submit' => __('Save','pntheme'),
 	);
+	$options['switcher'] = array(
+        'view' => 'select',
+        'title' => __('Color scheme switcher','pntheme'),
+        'options' => array('0'=>__('Only light','pntheme'), '1'=>__('Only dark','pntheme'), '2'=>__('Switcher','pntheme')),
+        'default' => is_isset($change,'switcher'),
+        'name' => 'switcher',
+        'work' => 'int',
+    );
 	$options['fixheader'] = array(
 		'view' => 'select',
 		'title' => __('To fix','pntheme'),
-		'options' => array('0'=>__('nothing','pntheme'), '1'=>__('bar','pntheme')),
+		'options' => array('0'=>__('nothing','pntheme'), '1'=>__('header','pntheme')),
 		'default' => is_isset($change,'fixheader'),
 		'name' => 'fixheader',
 		'work' => 'int',
@@ -47,6 +55,13 @@ function def_pn_theme_header_option($options){
 		'name' => 'hideloginbutton',
 		'work' => 'int',
 	);
+	//$options['logo-mobile'] = array(
+    //    'view' => 'uploader',
+    //    'title' => __('Mobile logo', 'pntheme'),
+    //    'default' => is_isset($change, 'logo-mobile'),
+    //    'name' => 'logo-mobile',
+    //    'work' => 'input',
+    //);
 	$options['line1'] = array(
 		'view' => 'line',
 	);
@@ -62,9 +77,9 @@ function def_pn_theme_header_option($options){
 	$options['line2'] = array(
 		'view' => 'line',
 	);
-	$options['telegram__title'] = array(
+    $options['telegram__title1'] = array(
         'view' => 'h3',
-        'title' => __('Contacts','pntheme'),
+        'title' => __('Telegram','pntheme'),
         'submit' => __('Save','pntheme'),
     );
     $options['telegram'] = array(
@@ -83,22 +98,102 @@ function def_pn_theme_header_option($options){
         'work' => 'input',
         'ml' => 1,
     );
-	$options['email'] = array(
-		'view' => 'inputbig',
-		'title' => __('E-mail', 'pntheme'),
-		'default' => is_isset($change,'email'),
-		'name' => 'email',
-		'work' => 'input',
-		'ml' => 1,
-	);
-	$options['skype'] = array(
-		'view' => 'inputbig',
-		'title' => __('Skype', 'pntheme'),
-		'default' => is_isset($change,'skype'),
-		'name' => 'skype',
-		'work' => 'input',
-		'ml' => 1,
-	);
+    //$options['telegram__title2'] = array(
+    //    'view' => 'h3',
+    //    'title' => __('Telegram 2','pntheme'),
+    //    'submit' => __('Save','pntheme'),
+    //);
+    //$options['telegram2'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('Telegram title', 'pntheme'),
+    //    'default' => is_isset($change,'telegram2'),
+    //    'name' => 'telegram2',
+    //    'work' => 'input',
+    //    'ml' => 1,
+    //);
+    //$options['telegram_link2'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('Telegram link', 'pntheme'),
+    //    'default' => is_isset($change,'telegram_link2'),
+    //    'name' => 'telegram_link2',
+    //    'work' => 'input',
+    //    'ml' => 1,
+    //);
+    //$options['telegram__title3'] = array(
+    //    'view' => 'h3',
+    //    'title' => __('Telegram 3','pntheme'),
+    //    'submit' => __('Save','pntheme'),
+    //);
+    //$options['telegram3'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('Telegram title', 'pntheme'),
+    //    'default' => is_isset($change,'telegram3'),
+    //    'name' => 'telegram3',
+    //    'work' => 'input',
+    //    'ml' => 1,
+    //);
+    //$options['telegram_link3'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('Telegram link', 'pntheme'),
+    //    'default' => is_isset($change,'telegram_link3'),
+    //    'name' => 'telegram_link3',
+    //    'work' => 'input',
+    //    'ml' => 1,
+    //);
+    $options['line4'] = array(
+        'view' => 'line',
+    );
+    $options['email__title'] = array(
+        'view' => 'h3',
+        'title' => __('E-mail','pntheme'),
+        'submit' => __('Save','pntheme'),
+    );
+    //$options['email_text'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('E-mail name', 'pntheme'),
+    //    'default' => is_isset($change,'email_text'),
+    //    'name' => 'email_text',
+    //    'work' => 'input',
+    //    'ml' => 1,
+    //);
+    $options['email'] = array(
+        'view' => 'inputbig',
+        'title' => __('E-mail', 'pntheme'),
+        'default' => is_isset($change,'email'),
+        'name' => 'email',
+        'work' => 'input',
+        'ml' => 1,
+    );
+    $options['line5'] = array(
+        'view' => 'line',
+    );
+    $options['skype__title'] = array(
+        'view' => 'h3',
+        'title' => __('Skype','pntheme'),
+        'submit' => __('Save','pntheme'),
+    );
+    $options['skype'] = array(
+        'view' => 'inputbig',
+        'title' => __('Skype', 'pntheme'),
+        'default' => is_isset($change,'skype'),
+        'name' => 'skype',
+        'work' => 'input',
+        'ml' => 1,
+    );
+    //$options['whatsapp__title'] = array(
+    //    'view' => 'h3',
+    //    'title' => __('Whatsapp','pntheme'),
+    //    'submit' => __('Save','pntheme'),
+    //);
+    //$options['whatsapp'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('Whatsapp', 'pntheme'),
+    //    'default' => is_isset($change,'whatsapp'),
+    //    'name' => 'whatsapp',
+    //    'work' => 'input',
+    //    'ml' => 1,
+    //);
+
 
 	return $options;
 }
@@ -129,14 +224,34 @@ function def_premium_action_pn_theme_header(){
 	$change = get_option('h_change');
 	if(!is_array($change)){ $change = array(); }
 
+	$change['switcher'] = $data['switcher'];
+
 	$change['fixheader'] = $data['fixheader'];
 	$change['linkhead'] = $data['linkhead'];
 	$change['hideloginbutton'] = $data['hideloginbutton'];
 	$change['timetable'] = $data['timetable'];
-	$change['telegram_link'] = $data['telegram_link'];
-	$change['telegram'] = str_replace('@','', $data['telegram']);
-	$change['email'] = $data['email'];
+	$change['logo-mobile'] = $data['logo-mobile'];
+
+	$change['phone'] = $data['phone'];
+	$change['icq'] = $data['icq'];
 	$change['skype'] = $data['skype'];
+	$change['email'] = $data['email'];
+	$change['email_text'] = $data['email_text'];
+
+	$change['support'] = $data['support'];
+	$change['telegram'] = $data['telegram'];
+	$change['telegram_link'] = str_replace('@','', $data['telegram_link']);
+	$change['telegram2'] = $data['telegram2'];
+	$change['telegram_link2'] = str_replace('@','', $data['telegram_link2']);
+	$change['telegram3'] = $data['telegram3'];
+	$change['telegram_link3'] = str_replace('@','', $data['telegram_link3']);
+
+	$change['viber'] = $data['viber'];
+	$change['whatsapp'] = $data['whatsapp'];
+	$change['jabber'] = $data['jabber'];
+	$change['inst'] = $data['inst'];
+
+	//$change['matrix'] = $data['matrix'];
 
 	update_option('h_change',$change);
 

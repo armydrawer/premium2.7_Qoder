@@ -37,13 +37,21 @@ if (!class_exists('AP_ABCEXCRYPTO')) {
 
         function wallets() {
 
-            $r = $this->request('/api/v1/wallets/balances', array('limit' => 100));
+            $r = $this->request('/api/v1/accounting/client/report-account/accounts/overview');
 
             $wallets = array();
-            if (is_array($r['data']) and count($r['data'])) {
-                $wallets = array_filter($r['data'], fn($item) => 'user' == $item['type'] and $item['isCoin'] and false === mb_stripos($item['currencyId'], 'TRX'));
-                usort($wallets, fn($a, $b) => strcasecmp($a['currencyId'], $b['currencyId']));
-                $wallets = array_column($wallets, 'currencyId', 'id');
+            if (!empty($r['accounts']['funding'])) {
+                foreach ($r['accounts']['funding'] as $k => $item) {
+                    $id = pn_strip_input($item['id']);
+                    $isCoin = boolval($item['isCoin']);
+                    $currencyId = pn_strip_input($item['currencyId']);
+
+                    if (!$isCoin || false !== mb_stripos($currencyId, 'TRX')) continue;
+
+                    $wallets[$id] = $currencyId;
+                }
+
+                natcasesort($wallets);
             }
 
             return $wallets;
@@ -51,11 +59,18 @@ if (!class_exists('AP_ABCEXCRYPTO')) {
 
         function balances() {
 
-            $r = $this->request('/api/v1/wallets/balances', array('limit' => 100));
+            $r = $this->request('/api/v1/accounting/client/report-account/accounts/overview');
 
             $balances = array();
-            if (is_array($r['data']) and count($r['data'])) {
-                $balances = array_filter($r['data'], fn($item) => 'user' == $item['type'] and $item['isCoin']);
+            if (!empty($r['accounts']['funding'])) {
+                foreach ($r['accounts']['funding'] as $k => $item) {
+                    $isCoin = boolval($item['isCoin']);
+                    $currencyId = pn_strip_input($item['currencyId']);
+
+                    if (!$isCoin || false !== mb_stripos($currencyId, 'TRX')) continue;
+
+                    $balances[] = $item;
+                }
             }
 
             return $balances;

@@ -183,6 +183,7 @@ function get_exchange_table1($temp, $def_cur_from = ' ', $def_cur_to = '', $def_
             $all_vtypes[$vt_arr_key] = $vt_arr_val;
         }
     }
+    natcasesort($all_vtypes);
 
     $directions = array();
     $dirs = array();

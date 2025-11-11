@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) exit();
 /*
 title: [en_US:]AlfaBit Fiat[:en_US][ru_RU:]AlfaBit Fiat[:ru_RU]
 description: [en_US:]AlfaBit Fiat automatic payouts[:en_US][ru_RU:]авто выплаты AlfaBit Fiat[:ru_RU]
-version: 2.7.0
+version: 2.7.1
 */
 
 if (!class_exists('Ext_AutoPayut_Premiumbox')) return;
@@ -358,7 +358,7 @@ if (!class_exists('paymerchant_alfabit_fiat')) {
 
         function _sum_format($sum, $m_id) {
 
-            if (!$m_id || get_mscript($m_id) !== $this->name) {
+            if (!$m_id || get_pscript($m_id) !== $this->name) {
                 return $sum;
             }
 

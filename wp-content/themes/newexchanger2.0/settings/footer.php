@@ -24,15 +24,6 @@ global $wpdb;
 		'title' => __('Footer','pntheme'),
 		'submit' => __('Save','pntheme'),
 	);
-	$options['ctext'] = array(
-		'view' => 'textarea',
-		'title' => __('Copywriting','pntheme'),
-		'default' => is_isset($change,'ctext'),
-		'name' => 'ctext',
-		'rows' => '8',
-		'work' => 'text',
-		'ml' => 1,
-	);
 	$options['timetable'] = array(
 		'view' => 'textarea',
 		'title' => __('Timetable','pntheme'),
@@ -42,6 +33,22 @@ global $wpdb;
 		'work' => 'text',
 		'ml' => 1,
 	);
+	$options['ctext'] = array(
+		'view' => 'textarea',
+		'title' => __('Copywriting','pntheme'),
+		'default' => is_isset($change,'ctext'),
+		'name' => 'ctext',
+		'rows' => '8',
+		'work' => 'text',
+		'ml' => 1,
+	);
+	//$options['f_logo'] = array(
+    //    'view' => 'uploader',
+    //    'title' => __('Footer logo', 'pntheme'),
+    //    'default' => is_isset($change,'f_logo'),
+    //    'name' => 'f_logo',
+    //    'work' => 'input',
+    //);
 	$options['line1'] = array(
 		'view' => 'line',
 	);
@@ -50,78 +57,123 @@ global $wpdb;
         'title' => __('Contacts','pntheme'),
         'submit' => __('Save','pntheme'),
     );
-    $options['tm_name'] = array(
+	$options['tm'] = array(
         'view' => 'inputbig',
-        'title' => __('Telegram name','pntheme'),
-        'default' => is_isset($change,'tm_name'),
-        'name' => 'tm_name',
+        'title' => __('Telegram title', 'pntheme'),
+        'default' => is_isset($change,'tm'),
+        'name' => 'tm',
+        'work' => 'input',
+		'ml' => 1,
+    );
+	$options['tm_link'] = array(
+        'view' => 'inputbig',
+        'title' => __('Telegram link','pntheme'),
+        'default' => is_isset($change,'tm_link'),
+        'name' => 'tm_link',
+        'work' => 'input',
+    );
+	$options['tm2'] = array(
+        'view' => 'inputbig',
+        'title' => __('Telegram title 2', 'pntheme'),
+        'default' => is_isset($change,'tm2'),
+        'name' => 'tm2',
+        'work' => 'input',
+		'ml' => 1,
+    );
+	$options['tm2_link'] = array(
+        'view' => 'inputbig',
+        'title' => __('Telegram link 2','pntheme'),
+        'default' => is_isset($change,'tm2_link'),
+        'name' => 'tm2_link',
+        'work' => 'input',
+    );
+    //$options['tm3'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('Telegram title 3', 'pntheme'),
+    //    'default' => is_isset($change,'tm3'),
+    //    'name' => 'tm3',
+    //    'work' => 'input',
+    //    'ml' => 1,
+    //);
+    //$options['tm3_link'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('Telegram link 3','pntheme'),
+    //    'default' => is_isset($change,'tm3_link'),
+    //    'name' => 'tm3_link',
+    //    'work' => 'input',
+    //);
+    $options['email'] = array(
+        'view' => 'inputbig',
+        'title' => __('E-mail', 'pntheme'),
+        'default' => is_isset($change,'email'),
+        'name' => 'email',
         'work' => 'input',
         'ml' => 1,
     );
-	$options['tm'] = array(
-		'view' => 'inputbig',
-		'title' => sprintf(__('Link to %s','pntheme'), 'Telegram'),
-		'default' => is_isset($change,'tm'),
-		'name' => 'tm',
-		'work' => 'input',
-		'ml' => 1,
-	);
-	$options['email'] = array(
-		'view' => 'inputbig',
-		'title' => __('E-mail', 'pntheme'),
-		'default' => is_isset($change,'email'),
-		'name' => 'email',
-		'work' => 'input',
-		'ml' => 1,
-	);
-	$options['jabber'] = array(
-		'view' => 'inputbig',
-		'title' => __('Jabber', 'pntheme'),
-		'default' => is_isset($change,'jabber'),
-		'name' => 'jabber',
-		'work' => 'input',
-		'ml' => 1,
-	);
-	$options['phone'] = array(
-		'view' => 'inputbig',
-		'title' => __('Phone', 'pntheme'),
-		'default' => is_isset($change,'phone'),
-		'name' => 'phone',
-		'work' => 'input',
-		'ml' => 1,
-	);
-	$options['icq'] = array(
-		'view' => 'inputbig',
-		'title' => __('ICQ', 'pntheme'),
-		'default' => is_isset($change,'icq'),
-		'name' => 'icq',
-		'work' => 'input',
-		'ml' => 1,
-	);
-	$options['skype'] = array(
-		'view' => 'inputbig',
-		'title' => __('Skype', 'pntheme'),
-		'default' => is_isset($change,'skype'),
-		'name' => 'skype',
-		'work' => 'input',
-		'ml' => 1,
-	);
-	$options['viber'] = array(
-		'view' => 'inputbig',
-		'title' => __('Viber', 'pntheme'),
-		'default' => is_isset($change,'viber'),
-		'name' => 'viber',
-		'work' => 'input',
-		'ml' => 1,
-	);
-	$options['whatsapp'] = array(
-		'view' => 'inputbig',
-		'title' => __('WhatsApp', 'pntheme'),
-		'default' => is_isset($change,'whatsapp'),
-		'name' => 'whatsapp',
-		'work' => 'input',
-		'ml' => 1,
-	);
+    //$options['dzen'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('Dzen', 'pntheme'),
+    //    'default' => is_isset($change,'dzen'),
+    //    'name' => 'dzen',
+    //    'work' => 'input',
+    //    'ml' => 1,
+    //);
+    //$options['dzen_link'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('Dzen link', 'pntheme'),
+    //    'default' => is_isset($change,'dzen_link'),
+    //    'name' => 'dzen_link',
+    //    'work' => 'input',
+    //    'ml' => 1,
+    //);
+    // $options['jabber'] = array(
+    //     'view' => 'inputbig',
+    //     'title' => __('Jabber', 'pntheme'),
+    //     'default' => is_isset($change,'jabber'),
+    //     'name' => 'jabber',
+    //     'work' => 'input',
+    //     'ml' => 1,
+    // );
+    //$options['phone'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('Phone', 'pntheme'),
+    //    'default' => is_isset($change,'phone'),
+    //    'name' => 'phone',
+    //    'work' => 'input',
+    //    'ml' => 1,
+    //);
+    //$options['icq'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('ICQ', 'pntheme'),
+    //    'default' => is_isset($change,'icq'),
+    //    'name' => 'icq',
+    //    'work' => 'input',
+    //    'ml' => 1,
+    //);
+    $options['skype'] = array(
+        'view' => 'inputbig',
+        'title' => __('Skype', 'pntheme'),
+        'default' => is_isset($change,'skype'),
+        'name' => 'skype',
+        'work' => 'input',
+        'ml' => 1,
+    );
+    //$options['viber'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('Viber', 'pntheme'),
+    //    'default' => is_isset($change,'viber'),
+    //    'name' => 'viber',
+    //    'work' => 'input',
+    //    'ml' => 1,
+    //);
+    //$options['whatsapp'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('WhatsApp', 'pntheme'),
+    //    'default' => is_isset($change,'whatsapp'),
+    //    'name' => 'whatsapp',
+    //    'work' => 'input',
+    //    'ml' => 1,
+    //);
     $options['line2'] = array(
         'view' => 'line',
     );
@@ -130,33 +182,39 @@ global $wpdb;
         'title' => __('Social media','pntheme'),
         'submit' => __('Save','pntheme'),
     );
-     $options['tm_soc'] = array(
-        'view' => 'inputbig',
-        'title' => __('Telegram','pntheme'),
-        'default' => is_isset($change,'tm_soc'),
-        'name' => 'tm_soc',
-        'work' => 'input',
-        'ml' => 1,
-    );
+    //$options['in'] = array(
+    //    'view' => 'inputbig',
+    //    'title' => __('LinkedIn','pntheme'),
+    //    'default' => is_isset($change,'in'),
+    //    'name' => 'in',
+    //    'work' => 'input',
+    //);
+	//$options['yt'] = array(
+	//	'view' => 'inputbig',
+	//	'title' => __('YouTube', 'pntheme'),
+	//	'default' => is_isset($change,'YouTube'),
+	//	'name' => 'yt',
+	//	'work' => 'input',
+	//	'ml' => 1,
+	//);
+	$options['tg'] = array(
+		'view' => 'inputbig',
+		'title' => __('Telegram','pntheme'),
+		'default' => is_isset($change,'tg'),
+		'name' => 'tg',
+		'work' => 'input',
+	);
 	$options['vk'] = array(
 		'view' => 'inputbig',
-		'title' => __('VK', 'pntheme'),
+		'title' => __('Vk', 'pntheme'),
 		'default' => is_isset($change,'vk'),
 		'name' => 'vk',
 		'work' => 'input',
 		'ml' => 1,
 	);
-	$options['ins'] = array(
-		'view' => 'inputbig',
-		'title' => __('IG', 'pntheme'),
-		'default' => is_isset($change,'ins'),
-		'name' => 'ins',
-		'work' => 'input',
-		'ml' => 1,
-	);
 	$options['fb'] = array(
 		'view' => 'inputbig',
-		'title' => __('FB', 'pntheme'),
+		'title' => __('Facebook', 'pntheme'),
 		'default' => is_isset($change,'fb'),
 		'name' => 'fb',
 		'work' => 'input',
@@ -169,6 +227,23 @@ global $wpdb;
 		'name' => 'tw',
 		'work' => 'input',
 		'ml' => 1,
+	);
+	$options['ins'] = array(
+		'view' => 'inputbig',
+		'title' => __('Instagram', 'pntheme'),
+		'default' => is_isset($change,'ins'),
+		'name' => 'ins',
+		'work' => 'input',
+		'ml' => 1,
+	);
+
+	$help = '
+	<p>'. __('If you plan to use links as social buttons, use the following shortcode','pntheme') .'</p>
+	<p><input type="text" name="" value="[soc_link]" onclick="this.select()" /></p>';
+	$options['newpanel_help'] = array(
+		'view' => 'help',
+		'title' => __('Info','pntheme'),
+		'default' => $help,
 	);
 
 	return $options;
@@ -202,22 +277,32 @@ global $wpdb;
 
 	$change['ctext'] = $data['ctext'];
 	$change['timetable'] = $data['timetable'];
-	$change['tm_name'] = $data['tm_name'];
 	$change['tm'] = $data['tm'];
+	$change['tm2'] = $data['tm2'];
+	$change['tm3'] = $data['tm3'];
+	$change['tm_link'] = $data['tm_link'];
+	$change['tm2_link'] = $data['tm2_link'];
+	$change['tm3_link'] = $data['tm3_link'];
 	$change['email'] = $data['email'];
-	$change['jabber'] = $data['jabber'];
 	$change['phone'] = $data['phone'];
+	$change['jabber'] = $data['jabber'];
 	$change['icq'] = $data['icq'];
 	$change['skype'] = $data['skype'];
 	$change['viber'] = $data['viber'];
 	$change['whatsapp'] = $data['whatsapp'];
 
-    $change['tm_soc'] = $data['tm_soc'];
-	$change['vk'] = $data['vk'];
+	$change['in'] = $data['in'];
+	$change['yt'] = $data['yt'];
 	$change['ins'] = $data['ins'];
 	$change['fb'] = $data['fb'];
 	$change['tw'] = $data['tw'];
+	$change['tg'] = $data['tg'];
+	$change['vk'] = $data['vk'];
 
+	$change['dzen'] = $data['dzen'];
+	$change['dzen_link'] = $data['dzen_link'];
+
+    $change['f_logo'] = $data['f_logo'];
 
 
 

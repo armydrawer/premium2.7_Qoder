@@ -263,7 +263,8 @@ function get_exchange_table2($temp, $def_cur_from = '', $def_cur_to = '') {
 	$all_vtypes = array();
 	foreach ($v as $vs) {
 		$all_vtypes[str_replace('.', '_', $vs->currency_code_title)] = $vs->currency_code_id;
-	}	
+	}
+    natcasesort($all_vtypes);
 	
 	$direction = '';
 	

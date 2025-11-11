@@ -1,0 +1,223 @@
+/* all */
+.js_amount {
+    cursor: pointer;
+}
+.js_wrap_error {
+    position: relative;
+}
+
+.info_window {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    float: none;
+    top: 49px;
+    left: 22px;
+    width: 87%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font:
+        13px/14px "Montserrat",
+        sans-serif;
+    padding: 7px 10px;
+    border-radius: 0px 0px 15px 15px;
+    border: 1px var(--pe-input-border-color) solid;
+    color: #000;
+    background: var(--pe-hints-bg);
+}
+.js_window_wrap.showed .info_window {
+    display: block;
+}
+.info_window_abs {
+    display: none;
+    position: absolute;
+    top: -5px;
+    float: none;
+    left: 36px;
+    background: url(images/ug.png) no-repeat;
+    width: 16px;
+    height: 5px;
+}
+.js_purse_link {
+    z-index: 20;
+    position: absolute;
+    float: none;
+    top: 50%;
+    left: 15px;
+    margin: -8px 0 0 0;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    background: url(images/purse.png) no-repeat center center;
+}
+.js_purse_link_ins {
+    position: relative;
+    width: 16px;
+    height: 16px;
+}
+.js_purse_ul {
+    position: absolute;
+    float: none;
+    top: 0;
+    left: 0px;
+    width: 250px;
+    background: #fff;
+    border: 1px solid #83a4c8;
+    border-radius: 8px;
+    font:
+        12px "Montserrat",
+        sans-serif;
+    color: #000;
+    display: none;
+}
+.js_purse_line {
+    padding: 5px 10px;
+    word-break: break-all;
+    word-wrap: break-word;
+    border-bottom: 1px solid #83a4c8;
+}
+input.js_purse_input {
+    padding-left: 40px;
+}
+/* end all */
+
+/* hexch */
+.hexch_ajax_wrap {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+.hexch_widget {
+    max-width: 1150px;
+    margin: 0 auto;
+}
+.hexch_div {
+    padding: 0 0px 20px;
+}
+.hexch_div_ins {
+    border-radius: var(--pe-input-radius);
+    padding: 30px 30px 10px;
+}
+.hexch_bigtitle {
+    font:
+        500 24px/29px var(--pe-font-family),
+        sans-serif;
+    color: var(--pe-headers-color);
+    margin: 0 0 15px 0px;
+}
+.hexch_information {
+    padding: 0 0 20px 0;
+}
+@media all and (min-width: 700px) {
+    .hexch_cols:after {
+        /*content: "";*/
+        /*display: block;*/
+        /*clear: both;*/
+    }
+    .hexch_left {
+        float: left;
+        width: 48%;
+    }
+    .hexch_right {
+        float: right;
+        width: 48%;
+    }
+    .hexch_pers {
+        float: left;
+        width: 48%;
+    }
+}
+.htable_ajax_wrap .hexch_left,
+.htable_ajax_wrap .rtl_body .hexch_left,
+.htable_ajax_wrap .hexch_right,
+.htable_ajax_wrap .rtl_body .hexch_right,
+.htable_ajax_wrap .hexch_pers,
+.htable_ajax_wrap .rtl_body .hexch_pers {
+    float: none;
+    width: auto;
+}
+.hexch_title_logo {
+    position: absolute;
+    float: none;
+    top: -3px;
+    left: 0;
+    width: 30px;
+    height: 30px;
+}
+.hexch_info_line {
+    color: #606060;
+    padding: 0 0 10px 0px;
+}
+.hexch_info_line p {
+    padding: 0px 0 2px;
+}
+@media all and (min-width: 700px) {
+    .hexch_ajax_wrap .hexch_info_line {
+        min-height: 50px;
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+.hexch_curs_line .check_purse_line {
+    padding: 20px 0 0px 0px;
+}
+.hexch_sumandcom {
+    font:
+        13px/16px "Montserrat",
+        sans-serif;
+    padding: 0 0 20px 0px;
+}
+.hexch_curs_line,
+.hexch_pers_line {
+    position: relative;
+    margin: 0 0 20px 0;
+}
+.hexch_pers_input {
+    position: relative;
+}
+.hexch_curs_input select,
+.hexch_pers_input select {
+    height: 50px;
+    width: 100%;
+}
+.hexch_submit_div {
+    padding: 0px 0px 10px 0px;
+}
+.show_out_0 input.hexch_submit {
+    width: 100%;
+}
+.hexch_checkdata_div,
+.hexch_div .exchange_checkpersdata {
+    padding: 0 0px 15px 0px;
+}
+/* end hexch */
+
+/* exch */
+
+.xchange_select select {
+    width: 100%;
+    height: 50px;
+}
+.xchange_sum_line {
+    position: relative;
+}
+
+.xchange_sum_input {
+    position: relative;
+    width: 100%;
+}
+
+.xchange_curs_line .check_purse_line {
+    padding: 20px 0 0px 0;
+}
+.xchange_curs_input,
+.xchange_pers_input {
+    position: relative;
+}
+.xchange_curs_input select,
+.xchange_pers_input select {
+    height: 50px;
+    width: 100%;
+}
+/* end exch */

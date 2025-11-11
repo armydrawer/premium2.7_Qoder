@@ -23,7 +23,7 @@ get_header();
 
 			<?php if (have_posts()) : ?>
 			<?php while (have_posts()) : the_post();
-				$image_arr = wp_get_attachment_image_src(get_post_thumbnail_id(), 'site-thumbnail');
+				$image_arr = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
 				$image = trim(is_isset($image_arr,0));
 				$class = '';
 				if ($image) { $class = 'has_img'; }
@@ -34,8 +34,6 @@ get_header();
 				<div class="news-block" itemscope itemtype="https://schema.org/NewsArticle">
 
 					<?php do_action('seodata_post', $post); ?>
-
-
 
 					<div class="news-block__wrapper">
 						<?php if($image){ ?>
