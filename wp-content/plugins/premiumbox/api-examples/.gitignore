@@ -1,0 +1,13 @@
+# Ignore log files
+*.log
+*.txt
+
+# Ignore configuration with real credentials
+config_prod.php
+
+# Ignore transaction data
+transactions.json
+last_transaction.txt
+
+# Ignore callback logs
+callback_logs.txt
